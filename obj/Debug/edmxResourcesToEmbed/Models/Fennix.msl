@@ -1,0 +1,1058 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="fennix360_pdnModelStoreContainer" CdmEntityContainer="fennix360_pdnEntities2">
+    <EntitySetMapping Name="AlertsByTickets">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.AlertsByTicket">
+        <MappingFragment StoreEntitySet="AlertsByTicket">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          <ScalarProperty Name="AlertId" ColumnName="AlertId" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CarrierByCountries">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.CarrierByCountry">
+        <MappingFragment StoreEntitySet="CarrierByCountries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CarrierId" ColumnName="CarrierId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="APN" ColumnName="APN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carriers">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.Carrier">
+        <MappingFragment StoreEntitySet="Carriers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Centers">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.Center">
+        <MappingFragment StoreEntitySet="Centers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="LevelId" ColumnName="LevelId" />
+          <ScalarProperty Name="Level2Id" ColumnName="Level2Id" />
+          <ScalarProperty Name="Level3Id" ColumnName="Level3Id" />
+          <ScalarProperty Name="Level4Id" ColumnName="Level4Id" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Connections">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.Connection">
+        <MappingFragment StoreEntitySet="Connections">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="SessionCode" ColumnName="SessionCode" />
+          <ScalarProperty Name="HostAddress" ColumnName="HostAddress" />
+          <ScalarProperty Name="FirmwareVersion" ColumnName="FirmwareVersion" />
+          <ScalarProperty Name="Started" ColumnName="Started" />
+          <ScalarProperty Name="Finished" ColumnName="Finished" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.Country">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ISOCode" ColumnName="ISOCode" />
+          <ScalarProperty Name="PhoneCode" ColumnName="PhoneCode" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.Customer">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Devices">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.Device">
+        <MappingFragment StoreEntitySet="Devices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CenterId" ColumnName="CenterId" />
+          <ScalarProperty Name="SimCardId" ColumnName="SimCardId" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="DeviceTypeId" ColumnName="DeviceTypeId" />
+          <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+          <ScalarProperty Name="FirmwareVersion" ColumnName="FirmwareVersion" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Online" ColumnName="Online" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeviceTypes">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.DeviceType">
+        <MappingFragment StoreEntitySet="DeviceTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MinSpeed" ColumnName="MinSpeed" />
+          <ScalarProperty Name="MaxHdop" ColumnName="MaxHdop" />
+          <ScalarProperty Name="MinGpsLevel" ColumnName="MinGpsLevel" />
+          <ScalarProperty Name="MinDifferenceTrackPoints" ColumnName="MinDifferenceTrackPoints" />
+          <ScalarProperty Name="Timeout" ColumnName="Timeout" />
+          <ScalarProperty Name="StationaryTimeout" ColumnName="StationaryTimeout" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="MapIcon" ColumnName="MapIcon" />
+          <ScalarProperty Name="TailColor" ColumnName="TailColor" />
+          <ScalarProperty Name="TailPoints" ColumnName="TailPoints" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeviceUses">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.DeviceUs">
+        <MappingFragment StoreEntitySet="DeviceUses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.Group">
+        <MappingFragment StoreEntitySet="Groups">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CenterId" ColumnName="CenterId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Languages">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.Language">
+        <MappingFragment StoreEntitySet="Languages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ISOCode" ColumnName="ISOCode" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.Location">
+        <MappingFragment StoreEntitySet="Locations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="ConnectingSession" ColumnName="ConnectingSession" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="DeviceDate" ColumnName="DeviceDate" />
+          <ScalarProperty Name="ServerDate" ColumnName="ServerDate" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Speed" ColumnName="Speed" />
+          <ScalarProperty Name="Course" ColumnName="Course" />
+          <ScalarProperty Name="MoveDistance" ColumnName="MoveDistance" />
+          <ScalarProperty Name="GPSstatus" ColumnName="GPSstatus" />
+          <ScalarProperty Name="SatellitesNumber" ColumnName="SatellitesNumber" />
+          <ScalarProperty Name="GPSFixedStatus" ColumnName="GPSFixedStatus" />
+          <ScalarProperty Name="HDOP" ColumnName="HDOP" />
+          <ScalarProperty Name="MCC" ColumnName="MCC" />
+          <ScalarProperty Name="LAC" ColumnName="LAC" />
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="AlarmStatus" ColumnName="AlarmStatus" />
+          <ScalarProperty Name="BatteryVoltage" ColumnName="BatteryVoltage" />
+          <ScalarProperty Name="BatteryPercentage" ColumnName="BatteryPercentage" />
+          <ScalarProperty Name="GSMSignal" ColumnName="GSMSignal" />
+          <ScalarProperty Name="BeltStatus" ColumnName="BeltStatus" />
+          <ScalarProperty Name="ShellStatus" ColumnName="ShellStatus" />
+          <ScalarProperty Name="ChargeStatus" ColumnName="ChargeStatus" />
+          <ScalarProperty Name="LowPowerStatus" ColumnName="LowPowerStatus" />
+          <ScalarProperty Name="DataLoggerStatus" ColumnName="DataLoggerStatus" />
+          <ScalarProperty Name="StillStatus" ColumnName="StillStatus" />
+          <ScalarProperty Name="EnableAlarmsStatus" ColumnName="EnableAlarmsStatus" />
+          <ScalarProperty Name="BuzzerStatus" ColumnName="BuzzerStatus" />
+          <ScalarProperty Name="VibratorStatus" ColumnName="VibratorStatus" />
+          <ScalarProperty Name="RFConnectionStatus" ColumnName="RFConnectionStatus" />
+          <ScalarProperty Name="RFGsensorStatus" ColumnName="RFGsensorStatus" />
+          <ScalarProperty Name="RFPlugStatus" ColumnName="RFPlugStatus" />
+          <ScalarProperty Name="RestrictedAreasStatus" ColumnName="RestrictedAreasStatus" />
+          <ScalarProperty Name="RestrictedPersonsStatus" ColumnName="RestrictedPersonsStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logs">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.Log">
+        <MappingFragment StoreEntitySet="Logs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RecordTypeId" ColumnName="RecordTypeId" />
+          <ScalarProperty Name="RecordId" ColumnName="RecordId" />
+          <ScalarProperty Name="Resource" ColumnName="Resource" />
+          <ScalarProperty Name="LogTypeId" ColumnName="LogTypeId" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationTypes">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.NotificationType">
+        <MappingFragment StoreEntitySet="NotificationTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parameters">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.Parameter">
+        <MappingFragment StoreEntitySet="Parameters">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Persons">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.Person">
+        <MappingFragment StoreEntitySet="Persons">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="CenterId" ColumnName="CenterId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+          <ScalarProperty Name="PersonTypeId" ColumnName="PersonTypeId" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="OwnerUserId" ColumnName="OwnerUserId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="GenreId" ColumnName="GenreId" />
+          <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+          <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="EyesColor" ColumnName="EyesColor" />
+          <ScalarProperty Name="HairColor" ColumnName="HairColor" />
+          <ScalarProperty Name="EthnyId" ColumnName="EthnyId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="FamilyPhones" ColumnName="FamilyPhones" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="ScarsMarksTattoos" ColumnName="ScarsMarksTattoos" />
+          <ScalarProperty Name="CrimeId" ColumnName="CrimeId" />
+          <ScalarProperty Name="Nicknames" ColumnName="Nicknames" />
+          <ScalarProperty Name="RiskId" ColumnName="RiskId" />
+          <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+          <ScalarProperty Name="AutoDST" ColumnName="AutoDST" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+          <ScalarProperty Name="ConnectionId" ColumnName="ConnectionId" />
+          <ScalarProperty Name="HasHouseArrest" ColumnName="HasHouseArrest" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ViewOnMap" ColumnName="ViewOnMap" />
+          <ScalarProperty Name="Online" ColumnName="Online" />
+          <ScalarProperty Name="AccessCode" ColumnName="AccessCode" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonsByGroups">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.PersonsByGroup">
+        <MappingFragment StoreEntitySet="PersonsByGroup">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PointsByRestrictedAreas">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.PointsByRestrictedArea">
+        <MappingFragment StoreEntitySet="PointsByRestrictedArea">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RestrictedAreaId" ColumnName="RestrictedAreaId" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecordTypes">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.RecordType">
+        <MappingFragment StoreEntitySet="RecordTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResponsesByTickets">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.ResponsesByTicket">
+        <MappingFragment StoreEntitySet="ResponsesByTicket">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="TicketStateId" ColumnName="TicketStateId" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestrictedAreas">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.RestrictedArea">
+        <MappingFragment StoreEntitySet="RestrictedAreas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RestrictedAreaId" ColumnName="RestrictedAreaId" />
+          <ScalarProperty Name="CenterId" ColumnName="CenterId" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="RestrictionTypeId" ColumnName="RestrictionTypeId" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="FinishDate" ColumnName="FinishDate" />
+          <ScalarProperty Name="RepeatRules" ColumnName="RepeatRules" />
+          <ScalarProperty Name="OnAlert" ColumnName="OnAlert" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestrictedPersons">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.RestrictedPerson">
+        <MappingFragment StoreEntitySet="RestrictedPersons">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OriginPersonId" ColumnName="OriginPersonId" />
+          <ScalarProperty Name="DestinationPersonId" ColumnName="DestinationPersonId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RestrictionTypeId" ColumnName="RestrictionTypeId" />
+          <ScalarProperty Name="UnitTypeId" ColumnName="UnitTypeId" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="NotifyDestinatary" ColumnName="NotifyDestinatary" />
+          <ScalarProperty Name="OnAlert" ColumnName="OnAlert" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sessions">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.Session">
+        <MappingFragment StoreEntitySet="Sessions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+          <ScalarProperty Name="Browser" ColumnName="Browser" />
+          <ScalarProperty Name="Started" ColumnName="Started" />
+          <ScalarProperty Name="Platform" ColumnName="Platform" />
+          <ScalarProperty Name="Agent" ColumnName="Agent" />
+          <ScalarProperty Name="HostAddress" ColumnName="HostAddress" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SessionUses">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.SessionUs">
+        <MappingFragment StoreEntitySet="SessionUses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+          <ScalarProperty Name="Started" ColumnName="Started" />
+          <ScalarProperty Name="HostAddress" ColumnName="HostAddress" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+          <ScalarProperty Name="AdditionalInfo" ColumnName="AdditionalInfo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SimCards">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.SimCard">
+        <MappingFragment StoreEntitySet="SimCards">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CenterId" ColumnName="CenterId" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="CarrierByCountryId" ColumnName="CarrierByCountryId" />
+          <ScalarProperty Name="SimCardTypeId" ColumnName="SimCardTypeId" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SimCardUses">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.SimCardUs">
+        <MappingFragment StoreEntitySet="SimCardUses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="SimCardId" ColumnName="SimCardId" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tickets">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.Ticket">
+        <MappingFragment StoreEntitySet="Tickets">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CenterId" ColumnName="CenterId" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+          <ScalarProperty Name="TicketStateId" ColumnName="TicketStateId" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="WithAlerts" ColumnName="WithAlerts" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketStates">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.TicketState">
+        <MappingFragment StoreEntitySet="TicketStates">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tokens">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.Token">
+        <MappingFragment StoreEntitySet="Tokens">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="LongLife" ColumnName="LongLife" />
+          <ScalarProperty Name="Start" ColumnName="Start" />
+          <ScalarProperty Name="Finish" ColumnName="Finish" />
+          <ScalarProperty Name="LastUse" ColumnName="LastUse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="CenterId" ColumnName="CenterId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+          <ScalarProperty Name="OwnerUserId" ColumnName="OwnerUserId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="GenreId" ColumnName="GenreId" />
+          <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+          <ScalarProperty Name="AutoDST" ColumnName="AutoDST" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Online" ColumnName="Online" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersByGroups">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.UsersByGroup">
+        <MappingFragment StoreEntitySet="UsersByGroup">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="Watching" ColumnName="Watching" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="samples">
+      <EntityTypeMapping TypeName="fennix360_pdnModel.sample">
+        <MappingFragment StoreEntitySet="sample">
+          <ScalarProperty Name="CarrierId" ColumnName="CarrierId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="APN" ColumnName="APN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="f_spCustomTicket" FunctionName="fennix360_pdnModel.Store.f_spCustomTicket" />
+    <FunctionImportMapping FunctionImportName="spAlertsByTicket" FunctionName="fennix360_pdnModel.Store.spAlertsByTicket">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spAlertsByTicket_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          <ScalarProperty Name="AlertId" ColumnName="AlertId" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="MessageTicketId" ColumnName="MessageTicketId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spCarrierByCountries" FunctionName="fennix360_pdnModel.Store.spCarrierByCountries">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spCarrierByCountries_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CarrierId" ColumnName="CarrierId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="APN" ColumnName="APN" />
+          <ScalarProperty Name="NameCarrierId" ColumnName="NameCarrierId" />
+          <ScalarProperty Name="NameCountryId" ColumnName="NameCountryId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spCarriers" FunctionName="fennix360_pdnModel.Store.spCarriers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spCarriers_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spCenters" FunctionName="fennix360_pdnModel.Store.spCenters">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spCenters_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="LevelId" ColumnName="LevelId" />
+          <ScalarProperty Name="Level2Id" ColumnName="Level2Id" />
+          <ScalarProperty Name="Level3Id" ColumnName="Level3Id" />
+          <ScalarProperty Name="Level4Id" ColumnName="Level4Id" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+          <ScalarProperty Name="NameCountryId" ColumnName="NameCountryId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spConnections" FunctionName="fennix360_pdnModel.Store.spConnections">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spConnections_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="SessionCode" ColumnName="SessionCode" />
+          <ScalarProperty Name="HostAddress" ColumnName="HostAddress" />
+          <ScalarProperty Name="FirmwareVersion" ColumnName="FirmwareVersion" />
+          <ScalarProperty Name="Started" ColumnName="Started" />
+          <ScalarProperty Name="Finished" ColumnName="Finished" />
+          <ScalarProperty Name="FirstNamePersonId" ColumnName="FirstNamePersonId" />
+          <ScalarProperty Name="IMEIDeviceId" ColumnName="IMEIDeviceId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spCountries" FunctionName="fennix360_pdnModel.Store.spCountries">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spCountries_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ISOCode" ColumnName="ISOCode" />
+          <ScalarProperty Name="PhoneCode" ColumnName="PhoneCode" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spCustomers" FunctionName="fennix360_pdnModel.Store.spCustomers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spCustomers_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spDevices" FunctionName="fennix360_pdnModel.Store.spDevices">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spDevices_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CenterId" ColumnName="CenterId" />
+          <ScalarProperty Name="SimCardId" ColumnName="SimCardId" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="DeviceTypeId" ColumnName="DeviceTypeId" />
+          <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+          <ScalarProperty Name="FirmwareVersion" ColumnName="FirmwareVersion" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Online" ColumnName="Online" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+          <ScalarProperty Name="NameCenterId" ColumnName="NameCenterId" />
+          <ScalarProperty Name="PhoneSimCardId" ColumnName="PhoneSimCardId" />
+          <ScalarProperty Name="FirstNamePersonId" ColumnName="FirstNamePersonId" />
+          <ScalarProperty Name="NameDeviceTypeId" ColumnName="NameDeviceTypeId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spDeviceTypes" FunctionName="fennix360_pdnModel.Store.spDeviceTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spDeviceTypes_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MinSpeed" ColumnName="MinSpeed" />
+          <ScalarProperty Name="MaxHdop" ColumnName="MaxHdop" />
+          <ScalarProperty Name="MinGpsLevel" ColumnName="MinGpsLevel" />
+          <ScalarProperty Name="MinDifferenceTrackPoints" ColumnName="MinDifferenceTrackPoints" />
+          <ScalarProperty Name="Timeout" ColumnName="Timeout" />
+          <ScalarProperty Name="StationaryTimeout" ColumnName="StationaryTimeout" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="MapIcon" ColumnName="MapIcon" />
+          <ScalarProperty Name="TailColor" ColumnName="TailColor" />
+          <ScalarProperty Name="TailPoints" ColumnName="TailPoints" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spDeviceUses" FunctionName="fennix360_pdnModel.Store.spDeviceUses">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spDeviceUses_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="FirstNamePersonId" ColumnName="FirstNamePersonId" />
+          <ScalarProperty Name="IMEIDeviceId" ColumnName="IMEIDeviceId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGroups" FunctionName="fennix360_pdnModel.Store.spGroups">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spGroups_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CenterId" ColumnName="CenterId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+          <ScalarProperty Name="NameCenterId" ColumnName="NameCenterId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spLanguages" FunctionName="fennix360_pdnModel.Store.spLanguages">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spLanguages_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ISOCode" ColumnName="ISOCode" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spLocations" FunctionName="fennix360_pdnModel.Store.spLocations">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spLocations_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="ConnectingSession" ColumnName="ConnectingSession" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="DeviceDate" ColumnName="DeviceDate" />
+          <ScalarProperty Name="ServerDate" ColumnName="ServerDate" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Speed" ColumnName="Speed" />
+          <ScalarProperty Name="Course" ColumnName="Course" />
+          <ScalarProperty Name="MoveDistance" ColumnName="MoveDistance" />
+          <ScalarProperty Name="GPSstatus" ColumnName="GPSstatus" />
+          <ScalarProperty Name="SatellitesNumber" ColumnName="SatellitesNumber" />
+          <ScalarProperty Name="GPSFixedStatus" ColumnName="GPSFixedStatus" />
+          <ScalarProperty Name="HDOP" ColumnName="HDOP" />
+          <ScalarProperty Name="MCC" ColumnName="MCC" />
+          <ScalarProperty Name="LAC" ColumnName="LAC" />
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="AlarmStatus" ColumnName="AlarmStatus" />
+          <ScalarProperty Name="BatteryVoltage" ColumnName="BatteryVoltage" />
+          <ScalarProperty Name="BatteryPercentage" ColumnName="BatteryPercentage" />
+          <ScalarProperty Name="GSMSignal" ColumnName="GSMSignal" />
+          <ScalarProperty Name="BeltStatus" ColumnName="BeltStatus" />
+          <ScalarProperty Name="ShellStatus" ColumnName="ShellStatus" />
+          <ScalarProperty Name="ChargeStatus" ColumnName="ChargeStatus" />
+          <ScalarProperty Name="LowPowerStatus" ColumnName="LowPowerStatus" />
+          <ScalarProperty Name="DataLoggerStatus" ColumnName="DataLoggerStatus" />
+          <ScalarProperty Name="StillStatus" ColumnName="StillStatus" />
+          <ScalarProperty Name="EnableAlarmsStatus" ColumnName="EnableAlarmsStatus" />
+          <ScalarProperty Name="BuzzerStatus" ColumnName="BuzzerStatus" />
+          <ScalarProperty Name="VibratorStatus" ColumnName="VibratorStatus" />
+          <ScalarProperty Name="RFConnectionStatus" ColumnName="RFConnectionStatus" />
+          <ScalarProperty Name="RFGsensorStatus" ColumnName="RFGsensorStatus" />
+          <ScalarProperty Name="RFPlugStatus" ColumnName="RFPlugStatus" />
+          <ScalarProperty Name="RestrictedAreasStatus" ColumnName="RestrictedAreasStatus" />
+          <ScalarProperty Name="RestrictedPersonsStatus" ColumnName="RestrictedPersonsStatus" />
+          <ScalarProperty Name="FirstNamePersonId" ColumnName="FirstNamePersonId" />
+          <ScalarProperty Name="IMEIDeviceId" ColumnName="IMEIDeviceId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spLogs" FunctionName="fennix360_pdnModel.Store.spLogs">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spLogs_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RecordTypeId" ColumnName="RecordTypeId" />
+          <ScalarProperty Name="RecordId" ColumnName="RecordId" />
+          <ScalarProperty Name="Resource" ColumnName="Resource" />
+          <ScalarProperty Name="LogTypeId" ColumnName="LogTypeId" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="FirstNameUserId" ColumnName="FirstNameUserId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spNotificationTypes" FunctionName="fennix360_pdnModel.Store.spNotificationTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spNotificationTypes_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spParameters" FunctionName="fennix360_pdnModel.Store.spParameters">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spParameters_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spPersons" FunctionName="fennix360_pdnModel.Store.spPersons">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spPersons_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="CenterId" ColumnName="CenterId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+          <ScalarProperty Name="PersonTypeId" ColumnName="PersonTypeId" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="OwnerUserId" ColumnName="OwnerUserId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="GenreId" ColumnName="GenreId" />
+          <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+          <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="EyesColor" ColumnName="EyesColor" />
+          <ScalarProperty Name="HairColor" ColumnName="HairColor" />
+          <ScalarProperty Name="EthnyId" ColumnName="EthnyId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="FamilyPhones" ColumnName="FamilyPhones" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="ScarsMarksTattoos" ColumnName="ScarsMarksTattoos" />
+          <ScalarProperty Name="CrimeId" ColumnName="CrimeId" />
+          <ScalarProperty Name="Nicknames" ColumnName="Nicknames" />
+          <ScalarProperty Name="RiskId" ColumnName="RiskId" />
+          <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+          <ScalarProperty Name="AutoDST" ColumnName="AutoDST" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+          <ScalarProperty Name="ConnectionId" ColumnName="ConnectionId" />
+          <ScalarProperty Name="HasHouseArrest" ColumnName="HasHouseArrest" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ViewOnMap" ColumnName="ViewOnMap" />
+          <ScalarProperty Name="Online" ColumnName="Online" />
+          <ScalarProperty Name="AccessCode" ColumnName="AccessCode" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+          <ScalarProperty Name="NameCustomerId" ColumnName="NameCustomerId" />
+          <ScalarProperty Name="NameCenterId" ColumnName="NameCenterId" />
+          <ScalarProperty Name="NameCountryId" ColumnName="NameCountryId" />
+          <ScalarProperty Name="NameLanguageId" ColumnName="NameLanguageId" />
+          <ScalarProperty Name="IMEIDeviceId" ColumnName="IMEIDeviceId" />
+          <ScalarProperty Name="FirstNameOwnerUserId" ColumnName="FirstNameOwnerUserId" />
+          <ScalarProperty Name="ConnectingSessionLocationId" ColumnName="ConnectingSessionLocationId" />
+          <ScalarProperty Name="SessionCodeConnectionId" ColumnName="SessionCodeConnectionId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spPersonsByGroup" FunctionName="fennix360_pdnModel.Store.spPersonsByGroup">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spPersonsByGroup_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="FirstNamePersonId" ColumnName="FirstNamePersonId" />
+          <ScalarProperty Name="NameGroupId" ColumnName="NameGroupId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spPointsByRestrictedArea" FunctionName="fennix360_pdnModel.Store.spPointsByRestrictedArea">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spPointsByRestrictedArea_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RestrictedAreaId" ColumnName="RestrictedAreaId" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="NameRestrictedAreaId" ColumnName="NameRestrictedAreaId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spRecordTypes" FunctionName="fennix360_pdnModel.Store.spRecordTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spRecordTypes_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spResponsesByTicket" FunctionName="fennix360_pdnModel.Store.spResponsesByTicket">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spResponsesByTicket_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="TicketStateId" ColumnName="TicketStateId" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+          <ScalarProperty Name="MessageTicketId" ColumnName="MessageTicketId" />
+          <ScalarProperty Name="FirstNameUserId" ColumnName="FirstNameUserId" />
+          <ScalarProperty Name="NameTicketStateId" ColumnName="NameTicketStateId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spRestrictedAreas" FunctionName="fennix360_pdnModel.Store.spRestrictedAreas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spRestrictedAreas_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RestrictedAreaId" ColumnName="RestrictedAreaId" />
+          <ScalarProperty Name="CenterId" ColumnName="CenterId" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="RestrictionTypeId" ColumnName="RestrictionTypeId" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="FinishDate" ColumnName="FinishDate" />
+          <ScalarProperty Name="RepeatRules" ColumnName="RepeatRules" />
+          <ScalarProperty Name="OnAlert" ColumnName="OnAlert" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+          <ScalarProperty Name="NameRestrictedAreaId" ColumnName="NameRestrictedAreaId" />
+          <ScalarProperty Name="NameCenterId" ColumnName="NameCenterId" />
+          <ScalarProperty Name="FirstNamePersonId" ColumnName="FirstNamePersonId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spRestrictedPersons" FunctionName="fennix360_pdnModel.Store.spRestrictedPersons">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spRestrictedPersons_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OriginPersonId" ColumnName="OriginPersonId" />
+          <ScalarProperty Name="DestinationPersonId" ColumnName="DestinationPersonId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RestrictionTypeId" ColumnName="RestrictionTypeId" />
+          <ScalarProperty Name="UnitTypeId" ColumnName="UnitTypeId" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="NotifyDestinatary" ColumnName="NotifyDestinatary" />
+          <ScalarProperty Name="OnAlert" ColumnName="OnAlert" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+          <ScalarProperty Name="FirstNameOriginPersonId" ColumnName="FirstNameOriginPersonId" />
+          <ScalarProperty Name="FirstNameDestinationPersonId" ColumnName="FirstNameDestinationPersonId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spSessions" FunctionName="fennix360_pdnModel.Store.spSessions">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spSessions_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+          <ScalarProperty Name="Browser" ColumnName="Browser" />
+          <ScalarProperty Name="Started" ColumnName="Started" />
+          <ScalarProperty Name="Platform" ColumnName="Platform" />
+          <ScalarProperty Name="Agent" ColumnName="Agent" />
+          <ScalarProperty Name="HostAddress" ColumnName="HostAddress" />
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+          <ScalarProperty Name="FirstNameUserId" ColumnName="FirstNameUserId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spSessionUses" FunctionName="fennix360_pdnModel.Store.spSessionUses">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spSessionUses_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+          <ScalarProperty Name="Started" ColumnName="Started" />
+          <ScalarProperty Name="HostAddress" ColumnName="HostAddress" />
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+          <ScalarProperty Name="AdditionalInfo" ColumnName="AdditionalInfo" />
+          <ScalarProperty Name="BrowserSessionId" ColumnName="BrowserSessionId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spSimCards" FunctionName="fennix360_pdnModel.Store.spSimCards">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spSimCards_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CenterId" ColumnName="CenterId" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="CarrierByCountryId" ColumnName="CarrierByCountryId" />
+          <ScalarProperty Name="SimCardTypeId" ColumnName="SimCardTypeId" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+          <ScalarProperty Name="NameCenterId" ColumnName="NameCenterId" />
+          <ScalarProperty Name="IMEIDeviceId" ColumnName="IMEIDeviceId" />
+          <ScalarProperty Name="APNCarrierByCountryId" ColumnName="APNCarrierByCountryId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spSimCardUses" FunctionName="fennix360_pdnModel.Store.spSimCardUses">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spSimCardUses_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="SimCardId" ColumnName="SimCardId" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="IMEIDeviceId" ColumnName="IMEIDeviceId" />
+          <ScalarProperty Name="PhoneSimCardId" ColumnName="PhoneSimCardId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spTickets" FunctionName="fennix360_pdnModel.Store.spTickets">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spTickets_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CenterId" ColumnName="CenterId" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+          <ScalarProperty Name="TicketStateId" ColumnName="TicketStateId" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="WithAlerts" ColumnName="WithAlerts" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+          <ScalarProperty Name="FirstNameUserId" ColumnName="FirstNameUserId" />
+          <ScalarProperty Name="NameCenterId" ColumnName="NameCenterId" />
+          <ScalarProperty Name="FirstNamePersonId" ColumnName="FirstNamePersonId" />
+          <ScalarProperty Name="ConnectingSessionLocationId" ColumnName="ConnectingSessionLocationId" />
+          <ScalarProperty Name="NameTicketStateId" ColumnName="NameTicketStateId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spTicketStates" FunctionName="fennix360_pdnModel.Store.spTicketStates">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spTicketStates_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spTokens" FunctionName="fennix360_pdnModel.Store.spTokens">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spTokens_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="LongLife" ColumnName="LongLife" />
+          <ScalarProperty Name="Start" ColumnName="Start" />
+          <ScalarProperty Name="Finish" ColumnName="Finish" />
+          <ScalarProperty Name="LastUse" ColumnName="LastUse" />
+          <ScalarProperty Name="FirstNameUserId" ColumnName="FirstNameUserId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spUsers" FunctionName="fennix360_pdnModel.Store.spUsers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spUsers_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="CenterId" ColumnName="CenterId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+          <ScalarProperty Name="OwnerUserId" ColumnName="OwnerUserId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="GenreId" ColumnName="GenreId" />
+          <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+          <ScalarProperty Name="AutoDST" ColumnName="AutoDST" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Online" ColumnName="Online" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+          <ScalarProperty Name="NameCustomerId" ColumnName="NameCustomerId" />
+          <ScalarProperty Name="NameCenterId" ColumnName="NameCenterId" />
+          <ScalarProperty Name="NameCountryId" ColumnName="NameCountryId" />
+          <ScalarProperty Name="NameLanguageId" ColumnName="NameLanguageId" />
+          <ScalarProperty Name="FirstNameOwnerUserId" ColumnName="FirstNameOwnerUserId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spUsersByGroup" FunctionName="fennix360_pdnModel.Store.spUsersByGroup">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="fennix360_pdnModel.spUsersByGroup_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="Watching" ColumnName="Watching" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="FirstNameUserId" ColumnName="FirstNameUserId" />
+          <ScalarProperty Name="NameGroupId" ColumnName="NameGroupId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

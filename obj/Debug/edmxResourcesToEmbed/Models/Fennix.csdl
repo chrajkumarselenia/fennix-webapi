@@ -1,0 +1,2490 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="fennix360_pdnModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AlertsByTicket">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TicketId" Type="Int64" Nullable="false" />
+    <Property Name="AlertId" Type="Byte" Nullable="false" />
+    <Property Name="Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Ticket" Relationship="Self.FK_AlertsByTicket_Tickets" FromRole="AlertsByTicket" ToRole="Tickets" />
+  </EntityType>
+  <EntityType Name="CarrierByCountry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CarrierId" Type="Int32" Nullable="false" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="APN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Carrier" Relationship="Self.FK_CarrierByCountries_Carriers" FromRole="CarrierByCountries" ToRole="Carriers" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_CarrierByCountries_Countries" FromRole="CarrierByCountries" ToRole="Countries" />
+    <NavigationProperty Name="SimCards" Relationship="Self.FK_SimCards_CarrierByCountries" FromRole="CarrierByCountries" ToRole="SimCards" />
+  </EntityType>
+  <EntityType Name="Carrier">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Updated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="CarrierByCountries" Relationship="Self.FK_CarrierByCountries_Carriers" FromRole="Carriers" ToRole="CarrierByCountries" />
+  </EntityType>
+  <EntityType Name="Center">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LevelId" Type="Byte" Nullable="false" />
+    <Property Name="Level2Id" Type="Int32" />
+    <Property Name="Level3Id" Type="Int32" />
+    <Property Name="Level4Id" Type="Int32" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Updated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_Centers_Countries" FromRole="Centers" ToRole="Countries" />
+    <NavigationProperty Name="Devices" Relationship="Self.FK_Devices_Centers" FromRole="Centers" ToRole="Devices" />
+    <NavigationProperty Name="Groups" Relationship="Self.FK_Groups_Centers" FromRole="Centers" ToRole="Groups" />
+    <NavigationProperty Name="Persons" Relationship="Self.FK_Persons_Centers" FromRole="Centers" ToRole="Persons" />
+    <NavigationProperty Name="RestrictedAreas" Relationship="Self.FK_RestrictedAreas_Centers" FromRole="Centers" ToRole="RestrictedAreas" />
+    <NavigationProperty Name="SimCards" Relationship="Self.FK_SimCards_Centers" FromRole="Centers" ToRole="SimCards" />
+    <NavigationProperty Name="Tickets" Relationship="Self.FK_Tickets_Centers" FromRole="Centers" ToRole="Tickets" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Centers" FromRole="Centers" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Connection">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonId" Type="Int64" Nullable="false" />
+    <Property Name="DeviceId" Type="Int64" />
+    <Property Name="SessionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HostAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirmwareVersion" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="Started" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Finished" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Device" Relationship="Self.FK_Connections_Devices" FromRole="Connections" ToRole="Devices" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_Connections_Persons" FromRole="Connections" ToRole="Persons" />
+    <NavigationProperty Name="Persons" Relationship="Self.FK_Persons_Connections" FromRole="Connections" ToRole="Persons" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ISOCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Updated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="CarrierByCountries" Relationship="Self.FK_CarrierByCountries_Countries" FromRole="Countries" ToRole="CarrierByCountries" />
+    <NavigationProperty Name="Centers" Relationship="Self.FK_Centers_Countries" FromRole="Countries" ToRole="Centers" />
+    <NavigationProperty Name="Persons" Relationship="Self.FK_Persons_Countries" FromRole="Countries" ToRole="Persons" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Countries" FromRole="Countries" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Logo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Updated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Persons" Relationship="Self.FK_Persons_Customers" FromRole="Customers" ToRole="Persons" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Customers" FromRole="Customers" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Device">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CenterId" Type="Int32" Nullable="false" />
+    <Property Name="SimCardId" Type="Int64" />
+    <Property Name="PersonId" Type="Int64" />
+    <Property Name="DeviceTypeId" Type="Int32" Nullable="false" />
+    <Property Name="IMEI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirmwareVersion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Online" Type="Boolean" Nullable="false" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Updated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Center" Relationship="Self.FK_Devices_Centers" FromRole="Devices" ToRole="Centers" />
+    <NavigationProperty Name="Connections" Relationship="Self.FK_Connections_Devices" FromRole="Devices" ToRole="Connections" />
+    <NavigationProperty Name="DeviceType" Relationship="Self.FK_Devices_DeviceTypes" FromRole="Devices" ToRole="DeviceTypes" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_Devices_Persons" FromRole="Devices" ToRole="Persons" />
+    <NavigationProperty Name="SimCard" Relationship="Self.FK_Devices_SimCards" FromRole="Devices" ToRole="SimCards" />
+    <NavigationProperty Name="DeviceUses" Relationship="Self.FK_DeviceUses_Devices" FromRole="Devices" ToRole="DeviceUses" />
+    <NavigationProperty Name="Locations" Relationship="Self.FK_Locations_Devices" FromRole="Devices" ToRole="Locations" />
+    <NavigationProperty Name="Persons" Relationship="Self.FK_Persons_Devices" FromRole="Devices" ToRole="Persons" />
+    <NavigationProperty Name="SimCards" Relationship="Self.FK_SimCards_Devices" FromRole="Devices" ToRole="SimCards" />
+    <NavigationProperty Name="SimCardUses" Relationship="Self.FK_SimCardUses_Devices" FromRole="Devices" ToRole="SimCardUses" />
+  </EntityType>
+  <EntityType Name="DeviceType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MinSpeed" Type="Int32" Nullable="false" />
+    <Property Name="MaxHdop" Type="Int32" Nullable="false" />
+    <Property Name="MinGpsLevel" Type="Int32" Nullable="false" />
+    <Property Name="MinDifferenceTrackPoints" Type="Decimal" Precision="9" Scale="6" Nullable="false" />
+    <Property Name="Timeout" Type="Int32" Nullable="false" />
+    <Property Name="StationaryTimeout" Type="Int32" Nullable="false" />
+    <Property Name="Icon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MapIcon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TailColor" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TailPoints" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Updated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Devices" Relationship="Self.FK_Devices_DeviceTypes" FromRole="DeviceTypes" ToRole="Devices" />
+  </EntityType>
+  <EntityType Name="DeviceUs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonId" Type="Int64" Nullable="false" />
+    <Property Name="DeviceId" Type="Int64" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Device" Relationship="Self.FK_DeviceUses_Devices" FromRole="DeviceUses" ToRole="Devices" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_DeviceUses_Persons" FromRole="DeviceUses" ToRole="Persons" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CenterId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Updated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Center" Relationship="Self.FK_Groups_Centers" FromRole="Groups" ToRole="Centers" />
+    <NavigationProperty Name="PersonsByGroups" Relationship="Self.FK_PersonsByGroup_Groups" FromRole="Groups" ToRole="PersonsByGroup" />
+    <NavigationProperty Name="UsersByGroups" Relationship="Self.FK_UsersByGroup_Groups" FromRole="Groups" ToRole="UsersByGroup" />
+  </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ISOCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Updated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Persons" Relationship="Self.FK_Persons_Languages" FromRole="Languages" ToRole="Persons" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Languages" FromRole="Languages" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonId" Type="Int64" Nullable="false" />
+    <Property Name="DeviceId" Type="Int64" />
+    <Property Name="ConnectingSession" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SerialNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DeviceDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ServerDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Latitude" Type="Decimal" Precision="8" Scale="6" Nullable="false" />
+    <Property Name="Longitude" Type="Decimal" Precision="9" Scale="6" Nullable="false" />
+    <Property Name="Speed" Type="Decimal" Precision="4" Scale="1" Nullable="false" />
+    <Property Name="Course" Type="Int32" Nullable="false" />
+    <Property Name="MoveDistance" Type="Int32" Nullable="false" />
+    <Property Name="GPSstatus" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SatellitesNumber" Type="Byte" Nullable="false" />
+    <Property Name="GPSFixedStatus" Type="Byte" Nullable="false" />
+    <Property Name="HDOP" Type="Int32" Nullable="false" />
+    <Property Name="MCC" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LAC" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CellID" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AlarmStatus" Type="String" MaxLength="21" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BatteryVoltage" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="BatteryPercentage" Type="Int32" Nullable="false" />
+    <Property Name="GSMSignal" Type="Byte" Nullable="false" />
+    <Property Name="BeltStatus" Type="Boolean" Nullable="false" />
+    <Property Name="ShellStatus" Type="Boolean" Nullable="false" />
+    <Property Name="ChargeStatus" Type="Int32" Nullable="false" />
+    <Property Name="LowPowerStatus" Type="Boolean" Nullable="false" />
+    <Property Name="DataLoggerStatus" Type="Boolean" Nullable="false" />
+    <Property Name="StillStatus" Type="Boolean" Nullable="false" />
+    <Property Name="EnableAlarmsStatus" Type="Boolean" Nullable="false" />
+    <Property Name="BuzzerStatus" Type="Boolean" Nullable="false" />
+    <Property Name="VibratorStatus" Type="Boolean" Nullable="false" />
+    <Property Name="RFConnectionStatus" Type="Boolean" Nullable="false" />
+    <Property Name="RFGsensorStatus" Type="Boolean" Nullable="false" />
+    <Property Name="RFPlugStatus" Type="Boolean" Nullable="false" />
+    <Property Name="RestrictedAreasStatus" Type="Boolean" Nullable="false" />
+    <Property Name="RestrictedPersonsStatus" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Device" Relationship="Self.FK_Locations_Devices" FromRole="Locations" ToRole="Devices" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_Locations_Persons" FromRole="Locations" ToRole="Persons" />
+    <NavigationProperty Name="Persons" Relationship="Self.FK_Persons_Locations" FromRole="Locations" ToRole="Persons" />
+    <NavigationProperty Name="Tickets" Relationship="Self.FK_Tickets_Locations" FromRole="Locations" ToRole="Tickets" />
+  </EntityType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int64" />
+    <Property Name="RecordTypeId" Type="Int32" Nullable="false" />
+    <Property Name="RecordId" Type="Int64" Nullable="false" />
+    <Property Name="Resource" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LogTypeId" Type="Int32" Nullable="false" />
+    <Property Name="Action" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Logs_Users" FromRole="Logs" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="NotificationType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Content" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Parameter">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="CenterId" Type="Int32" Nullable="false" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="LanguageId" Type="Int32" Nullable="false" />
+    <Property Name="PersonTypeId" Type="Int32" Nullable="false" />
+    <Property Name="DeviceId" Type="Int64" />
+    <Property Name="OwnerUserId" Type="Int64" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GenreId" Type="Byte" Nullable="false" />
+    <Property Name="Birthdate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DocumentId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Height" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Weight" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="EyesColor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="HairColor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="EthnyId" Type="Byte" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FamilyPhones" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ScarsMarksTattoos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CrimeId" Type="Byte" Nullable="false" />
+    <Property Name="Nicknames" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RiskId" Type="Byte" Nullable="false" />
+    <Property Name="TimeZone" Type="Int32" Nullable="false" />
+    <Property Name="AutoDST" Type="Boolean" Nullable="false" />
+    <Property Name="Picture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LocationId" Type="Int64" />
+    <Property Name="ConnectionId" Type="Int64" />
+    <Property Name="HasHouseArrest" Type="Boolean" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="ViewOnMap" Type="Boolean" Nullable="false" />
+    <Property Name="Online" Type="Boolean" Nullable="false" />
+    <Property Name="AccessCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Updated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Center" Relationship="Self.FK_Persons_Centers" FromRole="Persons" ToRole="Centers" />
+    <NavigationProperty Name="Connections" Relationship="Self.FK_Connections_Persons" FromRole="Persons" ToRole="Connections" />
+    <NavigationProperty Name="Connection" Relationship="Self.FK_Persons_Connections" FromRole="Persons" ToRole="Connections" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_Persons_Countries" FromRole="Persons" ToRole="Countries" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Persons_Customers" FromRole="Persons" ToRole="Customers" />
+    <NavigationProperty Name="Devices" Relationship="Self.FK_Devices_Persons" FromRole="Persons" ToRole="Devices" />
+    <NavigationProperty Name="Device" Relationship="Self.FK_Persons_Devices" FromRole="Persons" ToRole="Devices" />
+    <NavigationProperty Name="DeviceUses" Relationship="Self.FK_DeviceUses_Persons" FromRole="Persons" ToRole="DeviceUses" />
+    <NavigationProperty Name="Language" Relationship="Self.FK_Persons_Languages" FromRole="Persons" ToRole="Languages" />
+    <NavigationProperty Name="Locations" Relationship="Self.FK_Locations_Persons" FromRole="Persons" ToRole="Locations" />
+    <NavigationProperty Name="Location" Relationship="Self.FK_Persons_Locations" FromRole="Persons" ToRole="Locations" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Persons_Users" FromRole="Persons" ToRole="Users" />
+    <NavigationProperty Name="PersonsByGroups" Relationship="Self.FK_PersonsByGroup_Persons" FromRole="Persons" ToRole="PersonsByGroup" />
+    <NavigationProperty Name="RestrictedAreas" Relationship="Self.FK_RestrictedAreas_Persons" FromRole="Persons" ToRole="RestrictedAreas" />
+    <NavigationProperty Name="RestrictedPersons" Relationship="Self.FK_RestrictedPersons_Persons" FromRole="Persons" ToRole="RestrictedPersons" />
+    <NavigationProperty Name="RestrictedPersons1" Relationship="Self.FK_RestrictedPersons_Persons1" FromRole="Persons" ToRole="RestrictedPersons" />
+    <NavigationProperty Name="Tickets" Relationship="Self.FK_Tickets_Persons" FromRole="Persons" ToRole="Tickets" />
+  </EntityType>
+  <EntityType Name="PersonsByGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonId" Type="Int64" Nullable="false" />
+    <Property Name="GroupId" Type="Int64" Nullable="false" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Group" Relationship="Self.FK_PersonsByGroup_Groups" FromRole="PersonsByGroup" ToRole="Groups" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_PersonsByGroup_Persons" FromRole="PersonsByGroup" ToRole="Persons" />
+  </EntityType>
+  <EntityType Name="PointsByRestrictedArea">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RestrictedAreaId" Type="Int64" Nullable="false" />
+    <Property Name="Latitude" Type="Decimal" Precision="8" Scale="6" Nullable="false" />
+    <Property Name="Longitude" Type="Decimal" Precision="9" Scale="6" Nullable="false" />
+    <NavigationProperty Name="RestrictedArea" Relationship="Self.FK_PointsByRestrictedArea_RestrictedAreas" FromRole="PointsByRestrictedArea" ToRole="RestrictedAreas" />
+  </EntityType>
+  <EntityType Name="RecordType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ResponsesByTicket">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TicketId" Type="Int64" Nullable="false" />
+    <Property Name="UserId" Type="Int64" Nullable="false" />
+    <Property Name="TicketStateId" Type="Byte" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Updated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Ticket" Relationship="Self.FK_ResponsesByTicket_Tickets" FromRole="ResponsesByTicket" ToRole="Tickets" />
+    <NavigationProperty Name="TicketState" Relationship="Self.FK_ResponsesByTicket_TicketStates" FromRole="ResponsesByTicket" ToRole="TicketStates" />
+    <NavigationProperty Name="User" Relationship="Self.FK_ResponsesByTicket_Users" FromRole="ResponsesByTicket" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="RestrictedArea">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RestrictedAreaId" Type="Int64" />
+    <Property Name="CenterId" Type="Int32" />
+    <Property Name="PersonId" Type="Int64" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Color" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RestrictionTypeId" Type="Byte" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FinishDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="RepeatRules" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OnAlert" Type="Boolean" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Updated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Center" Relationship="Self.FK_RestrictedAreas_Centers" FromRole="RestrictedAreas" ToRole="Centers" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_RestrictedAreas_Persons" FromRole="RestrictedAreas" ToRole="Persons" />
+    <NavigationProperty Name="PointsByRestrictedAreas" Relationship="Self.FK_PointsByRestrictedArea_RestrictedAreas" FromRole="RestrictedAreas" ToRole="PointsByRestrictedArea" />
+    <NavigationProperty Name="RestrictedAreas1" Relationship="Self.FK_RestrictedAreas_RestrictedAreas1" FromRole="RestrictedAreas" ToRole="RestrictedAreas1" />
+    <NavigationProperty Name="RestrictedArea1" Relationship="Self.FK_RestrictedAreas_RestrictedAreas1" FromRole="RestrictedAreas1" ToRole="RestrictedAreas" />
+  </EntityType>
+  <EntityType Name="RestrictedPerson">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OriginPersonId" Type="Int64" Nullable="false" />
+    <Property Name="DestinationPersonId" Type="Int64" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RestrictionTypeId" Type="Byte" Nullable="false" />
+    <Property Name="UnitTypeId" Type="Byte" Nullable="false" />
+    <Property Name="Distance" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+    <Property Name="NotifyDestinatary" Type="Boolean" Nullable="false" />
+    <Property Name="OnAlert" Type="Boolean" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Updated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_RestrictedPersons_Persons" FromRole="RestrictedPersons" ToRole="Persons" />
+    <NavigationProperty Name="Person1" Relationship="Self.FK_RestrictedPersons_Persons1" FromRole="RestrictedPersons" ToRole="Persons" />
+  </EntityType>
+  <EntityType Name="Session">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int64" Nullable="false" />
+    <Property Name="TokenId" Type="Int64" Nullable="false" />
+    <Property Name="Browser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Started" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Platform" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Agent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HostAddress" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Location" Type="Geography" Nullable="false" />
+    <Property Name="LocationName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Sessions_Users" FromRole="Sessions" ToRole="Users" />
+    <NavigationProperty Name="SessionUses" Relationship="Self.FK_SessionUses_Sessions" FromRole="Sessions" ToRole="SessionUses" />
+  </EntityType>
+  <EntityType Name="SessionUs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SessionId" Type="Int64" Nullable="false" />
+    <Property Name="Started" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HostAddress" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Location" Type="Geography" Nullable="false" />
+    <Property Name="LocationName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="AdditionalInfo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Session" Relationship="Self.FK_SessionUses_Sessions" FromRole="SessionUses" ToRole="Sessions" />
+  </EntityType>
+  <EntityType Name="SimCard">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CenterId" Type="Int32" Nullable="false" />
+    <Property Name="DeviceId" Type="Int64" />
+    <Property Name="CarrierByCountryId" Type="Int32" Nullable="false" />
+    <Property Name="SimCardTypeId" Type="Int32" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Serial" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Updated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="CarrierByCountry" Relationship="Self.FK_SimCards_CarrierByCountries" FromRole="SimCards" ToRole="CarrierByCountries" />
+    <NavigationProperty Name="Center" Relationship="Self.FK_SimCards_Centers" FromRole="SimCards" ToRole="Centers" />
+    <NavigationProperty Name="Devices" Relationship="Self.FK_Devices_SimCards" FromRole="SimCards" ToRole="Devices" />
+    <NavigationProperty Name="Device" Relationship="Self.FK_SimCards_Devices" FromRole="SimCards" ToRole="Devices" />
+    <NavigationProperty Name="SimCardUses" Relationship="Self.FK_SimCardUses_SimCards" FromRole="SimCards" ToRole="SimCardUses" />
+  </EntityType>
+  <EntityType Name="SimCardUs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DeviceId" Type="Int64" Nullable="false" />
+    <Property Name="SimCardId" Type="Int64" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Device" Relationship="Self.FK_SimCardUses_Devices" FromRole="SimCardUses" ToRole="Devices" />
+    <NavigationProperty Name="SimCard" Relationship="Self.FK_SimCardUses_SimCards" FromRole="SimCardUses" ToRole="SimCards" />
+  </EntityType>
+  <EntityType Name="Ticket">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int64" />
+    <Property Name="CenterId" Type="Int32" Nullable="false" />
+    <Property Name="PersonId" Type="Int64" Nullable="false" />
+    <Property Name="LocationId" Type="Int64" />
+    <Property Name="TicketStateId" Type="Byte" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WithAlerts" Type="Boolean" Nullable="false" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Updated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AlertsByTickets" Relationship="Self.FK_AlertsByTicket_Tickets" FromRole="Tickets" ToRole="AlertsByTicket" />
+    <NavigationProperty Name="Center" Relationship="Self.FK_Tickets_Centers" FromRole="Tickets" ToRole="Centers" />
+    <NavigationProperty Name="Location" Relationship="Self.FK_Tickets_Locations" FromRole="Tickets" ToRole="Locations" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_Tickets_Persons" FromRole="Tickets" ToRole="Persons" />
+    <NavigationProperty Name="ResponsesByTickets" Relationship="Self.FK_ResponsesByTicket_Tickets" FromRole="Tickets" ToRole="ResponsesByTicket" />
+    <NavigationProperty Name="TicketState" Relationship="Self.FK_Tickets_TicketStates" FromRole="Tickets" ToRole="TicketStates" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Tickets_Users" FromRole="Tickets" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="TicketState">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Byte" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ResponsesByTickets" Relationship="Self.FK_ResponsesByTicket_TicketStates" FromRole="TicketStates" ToRole="ResponsesByTicket" />
+    <NavigationProperty Name="Tickets" Relationship="Self.FK_Tickets_TicketStates" FromRole="TicketStates" ToRole="Tickets" />
+  </EntityType>
+  <EntityType Name="Token">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int64" Nullable="false" />
+    <Property Name="SessionId" Type="Int64" />
+    <Property Name="Code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LongLife" Type="Boolean" Nullable="false" />
+    <Property Name="Start" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Finish" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUse" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Tokens_Users" FromRole="Tokens" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int32" />
+    <Property Name="CenterId" Type="Int32" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="LanguageId" Type="Int32" Nullable="false" />
+    <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+    <Property Name="OwnerUserId" Type="Int64" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GenreId" Type="Byte" Nullable="false" />
+    <Property Name="TimeZone" Type="Int32" Nullable="false" />
+    <Property Name="AutoDST" Type="Boolean" Nullable="false" />
+    <Property Name="Picture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Online" Type="Boolean" Nullable="false" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Updated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Center" Relationship="Self.FK_Users_Centers" FromRole="Users" ToRole="Centers" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_Users_Countries" FromRole="Users" ToRole="Countries" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Users_Customers" FromRole="Users" ToRole="Customers" />
+    <NavigationProperty Name="Language" Relationship="Self.FK_Users_Languages" FromRole="Users" ToRole="Languages" />
+    <NavigationProperty Name="Logs" Relationship="Self.FK_Logs_Users" FromRole="Users" ToRole="Logs" />
+    <NavigationProperty Name="Persons" Relationship="Self.FK_Persons_Users" FromRole="Users" ToRole="Persons" />
+    <NavigationProperty Name="ResponsesByTickets" Relationship="Self.FK_ResponsesByTicket_Users" FromRole="Users" ToRole="ResponsesByTicket" />
+    <NavigationProperty Name="Sessions" Relationship="Self.FK_Sessions_Users" FromRole="Users" ToRole="Sessions" />
+    <NavigationProperty Name="Tickets" Relationship="Self.FK_Tickets_Users" FromRole="Users" ToRole="Tickets" />
+    <NavigationProperty Name="Tokens" Relationship="Self.FK_Tokens_Users" FromRole="Users" ToRole="Tokens" />
+    <NavigationProperty Name="Users1" Relationship="Self.FK_Users_Users" FromRole="Users" ToRole="Users1" />
+    <NavigationProperty Name="User1" Relationship="Self.FK_Users_Users" FromRole="Users1" ToRole="Users" />
+    <NavigationProperty Name="UsersByGroups" Relationship="Self.FK_UsersByGroup_Users" FromRole="Users" ToRole="UsersByGroup" />
+  </EntityType>
+  <EntityType Name="UsersByGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int64" Nullable="false" />
+    <Property Name="GroupId" Type="Int64" Nullable="false" />
+    <Property Name="Watching" Type="Boolean" Nullable="false" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Group" Relationship="Self.FK_UsersByGroup_Groups" FromRole="UsersByGroup" ToRole="Groups" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UsersByGroup_Users" FromRole="UsersByGroup" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="sample">
+    <Key>
+      <PropertyRef Name="CarrierId" />
+      <PropertyRef Name="CountryId" />
+      <PropertyRef Name="APN" />
+    </Key>
+    <Property Name="CarrierId" Type="Int32" Nullable="false" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="APN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AlertsByTicket_Tickets">
+    <End Role="Tickets" Type="Self.Ticket" Multiplicity="1" />
+    <End Role="AlertsByTicket" Type="Self.AlertsByTicket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tickets">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AlertsByTicket">
+        <PropertyRef Name="TicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarrierByCountries_Carriers">
+    <End Role="Carriers" Type="Self.Carrier" Multiplicity="1" />
+    <End Role="CarrierByCountries" Type="Self.CarrierByCountry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carriers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CarrierByCountries">
+        <PropertyRef Name="CarrierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarrierByCountries_Countries">
+    <End Role="Countries" Type="Self.Country" Multiplicity="1" />
+    <End Role="CarrierByCountries" Type="Self.CarrierByCountry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CarrierByCountries">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SimCards_CarrierByCountries">
+    <End Role="CarrierByCountries" Type="Self.CarrierByCountry" Multiplicity="1" />
+    <End Role="SimCards" Type="Self.SimCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarrierByCountries">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SimCards">
+        <PropertyRef Name="CarrierByCountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Centers_Countries">
+    <End Role="Countries" Type="Self.Country" Multiplicity="1" />
+    <End Role="Centers" Type="Self.Center" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Centers">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Devices_Centers">
+    <End Role="Centers" Type="Self.Center" Multiplicity="1" />
+    <End Role="Devices" Type="Self.Device" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Centers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Devices">
+        <PropertyRef Name="CenterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Groups_Centers">
+    <End Role="Centers" Type="Self.Center" Multiplicity="1" />
+    <End Role="Groups" Type="Self.Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Centers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Groups">
+        <PropertyRef Name="CenterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persons_Centers">
+    <End Role="Centers" Type="Self.Center" Multiplicity="1" />
+    <End Role="Persons" Type="Self.Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Centers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Persons">
+        <PropertyRef Name="CenterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RestrictedAreas_Centers">
+    <End Role="Centers" Type="Self.Center" Multiplicity="0..1" />
+    <End Role="RestrictedAreas" Type="Self.RestrictedArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Centers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RestrictedAreas">
+        <PropertyRef Name="CenterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SimCards_Centers">
+    <End Role="Centers" Type="Self.Center" Multiplicity="1" />
+    <End Role="SimCards" Type="Self.SimCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Centers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SimCards">
+        <PropertyRef Name="CenterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_Centers">
+    <End Role="Centers" Type="Self.Center" Multiplicity="1" />
+    <End Role="Tickets" Type="Self.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Centers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="CenterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Centers">
+    <End Role="Centers" Type="Self.Center" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Centers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="CenterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Connections_Devices">
+    <End Role="Devices" Type="Self.Device" Multiplicity="0..1" />
+    <End Role="Connections" Type="Self.Connection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Devices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Connections">
+        <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Connections_Persons">
+    <End Role="Persons" Type="Self.Person" Multiplicity="1" />
+    <End Role="Connections" Type="Self.Connection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persons">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Connections">
+        <PropertyRef Name="PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persons_Connections">
+    <End Role="Connections" Type="Self.Connection" Multiplicity="0..1" />
+    <End Role="Persons" Type="Self.Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Connections">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Persons">
+        <PropertyRef Name="ConnectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persons_Countries">
+    <End Role="Countries" Type="Self.Country" Multiplicity="1" />
+    <End Role="Persons" Type="Self.Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Persons">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Countries">
+    <End Role="Countries" Type="Self.Country" Multiplicity="1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persons_Customers">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Persons" Type="Self.Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Persons">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Customers">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Devices_DeviceTypes">
+    <End Role="DeviceTypes" Type="Self.DeviceType" Multiplicity="1" />
+    <End Role="Devices" Type="Self.Device" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeviceTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Devices">
+        <PropertyRef Name="DeviceTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Devices_Persons">
+    <End Role="Persons" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Devices" Type="Self.Device" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persons">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Devices">
+        <PropertyRef Name="PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Devices_SimCards">
+    <End Role="SimCards" Type="Self.SimCard" Multiplicity="0..1" />
+    <End Role="Devices" Type="Self.Device" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SimCards">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Devices">
+        <PropertyRef Name="SimCardId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeviceUses_Devices">
+    <End Role="Devices" Type="Self.Device" Multiplicity="1" />
+    <End Role="DeviceUses" Type="Self.DeviceUs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Devices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeviceUses">
+        <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Locations_Devices">
+    <End Role="Devices" Type="Self.Device" Multiplicity="0..1" />
+    <End Role="Locations" Type="Self.Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Devices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Locations">
+        <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persons_Devices">
+    <End Role="Devices" Type="Self.Device" Multiplicity="0..1" />
+    <End Role="Persons" Type="Self.Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Devices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Persons">
+        <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SimCards_Devices">
+    <End Role="Devices" Type="Self.Device" Multiplicity="0..1" />
+    <End Role="SimCards" Type="Self.SimCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Devices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SimCards">
+        <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SimCardUses_Devices">
+    <End Role="Devices" Type="Self.Device" Multiplicity="1" />
+    <End Role="SimCardUses" Type="Self.SimCardUs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Devices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SimCardUses">
+        <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeviceUses_Persons">
+    <End Role="Persons" Type="Self.Person" Multiplicity="1" />
+    <End Role="DeviceUses" Type="Self.DeviceUs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persons">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeviceUses">
+        <PropertyRef Name="PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonsByGroup_Groups">
+    <End Role="Groups" Type="Self.Group" Multiplicity="1" />
+    <End Role="PersonsByGroup" Type="Self.PersonsByGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PersonsByGroup">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersByGroup_Groups">
+    <End Role="Groups" Type="Self.Group" Multiplicity="1" />
+    <End Role="UsersByGroup" Type="Self.UsersByGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsersByGroup">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persons_Languages">
+    <End Role="Languages" Type="Self.Language" Multiplicity="1" />
+    <End Role="Persons" Type="Self.Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Languages">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Persons">
+        <PropertyRef Name="LanguageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Languages">
+    <End Role="Languages" Type="Self.Language" Multiplicity="1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Languages">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="LanguageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Locations_Persons">
+    <End Role="Persons" Type="Self.Person" Multiplicity="1" />
+    <End Role="Locations" Type="Self.Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persons">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Locations">
+        <PropertyRef Name="PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persons_Locations">
+    <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
+    <End Role="Persons" Type="Self.Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Persons">
+        <PropertyRef Name="LocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_Locations">
+    <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="LocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logs_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Logs" Type="Self.Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persons_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Persons" Type="Self.Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Persons">
+        <PropertyRef Name="OwnerUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonsByGroup_Persons">
+    <End Role="Persons" Type="Self.Person" Multiplicity="1" />
+    <End Role="PersonsByGroup" Type="Self.PersonsByGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persons">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PersonsByGroup">
+        <PropertyRef Name="PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RestrictedAreas_Persons">
+    <End Role="Persons" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="RestrictedAreas" Type="Self.RestrictedArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persons">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RestrictedAreas">
+        <PropertyRef Name="PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RestrictedPersons_Persons">
+    <End Role="Persons" Type="Self.Person" Multiplicity="1" />
+    <End Role="RestrictedPersons" Type="Self.RestrictedPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persons">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RestrictedPersons">
+        <PropertyRef Name="OriginPersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RestrictedPersons_Persons1">
+    <End Role="Persons" Type="Self.Person" Multiplicity="1" />
+    <End Role="RestrictedPersons" Type="Self.RestrictedPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persons">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RestrictedPersons">
+        <PropertyRef Name="DestinationPersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_Persons">
+    <End Role="Persons" Type="Self.Person" Multiplicity="1" />
+    <End Role="Tickets" Type="Self.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persons">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PointsByRestrictedArea_RestrictedAreas">
+    <End Role="RestrictedAreas" Type="Self.RestrictedArea" Multiplicity="1" />
+    <End Role="PointsByRestrictedArea" Type="Self.PointsByRestrictedArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RestrictedAreas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PointsByRestrictedArea">
+        <PropertyRef Name="RestrictedAreaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResponsesByTicket_Tickets">
+    <End Role="Tickets" Type="Self.Ticket" Multiplicity="1" />
+    <End Role="ResponsesByTicket" Type="Self.ResponsesByTicket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tickets">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ResponsesByTicket">
+        <PropertyRef Name="TicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResponsesByTicket_TicketStates">
+    <End Role="TicketStates" Type="Self.TicketState" Multiplicity="1" />
+    <End Role="ResponsesByTicket" Type="Self.ResponsesByTicket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TicketStates">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ResponsesByTicket">
+        <PropertyRef Name="TicketStateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResponsesByTicket_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="ResponsesByTicket" Type="Self.ResponsesByTicket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ResponsesByTicket">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RestrictedAreas_RestrictedAreas1">
+    <End Role="RestrictedAreas" Type="Self.RestrictedArea" Multiplicity="0..1" />
+    <End Role="RestrictedAreas1" Type="Self.RestrictedArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RestrictedAreas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RestrictedAreas1">
+        <PropertyRef Name="RestrictedAreaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sessions_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Sessions" Type="Self.Session" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sessions">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SessionUses_Sessions">
+    <End Role="Sessions" Type="Self.Session" Multiplicity="1" />
+    <End Role="SessionUses" Type="Self.SessionUs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sessions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SessionUses">
+        <PropertyRef Name="SessionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SimCardUses_SimCards">
+    <End Role="SimCards" Type="Self.SimCard" Multiplicity="1" />
+    <End Role="SimCardUses" Type="Self.SimCardUs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SimCards">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SimCardUses">
+        <PropertyRef Name="SimCardId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_TicketStates">
+    <End Role="TicketStates" Type="Self.TicketState" Multiplicity="1" />
+    <End Role="Tickets" Type="Self.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TicketStates">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="TicketStateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tokens_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Tokens" Type="Self.Token" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tokens">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Users1" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users1">
+        <PropertyRef Name="OwnerUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersByGroup_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="UsersByGroup" Type="Self.UsersByGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsersByGroup">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="fennix360_pdnEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AlertsByTickets" EntityType="Self.AlertsByTicket" />
+    <EntitySet Name="CarrierByCountries" EntityType="Self.CarrierByCountry" />
+    <EntitySet Name="Carriers" EntityType="Self.Carrier" />
+    <EntitySet Name="Centers" EntityType="Self.Center" />
+    <EntitySet Name="Connections" EntityType="Self.Connection" />
+    <EntitySet Name="Countries" EntityType="Self.Country" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Devices" EntityType="Self.Device" />
+    <EntitySet Name="DeviceTypes" EntityType="Self.DeviceType" />
+    <EntitySet Name="DeviceUses" EntityType="Self.DeviceUs" />
+    <EntitySet Name="Groups" EntityType="Self.Group" />
+    <EntitySet Name="Languages" EntityType="Self.Language" />
+    <EntitySet Name="Locations" EntityType="Self.Location" />
+    <EntitySet Name="Logs" EntityType="Self.Log" />
+    <EntitySet Name="NotificationTypes" EntityType="Self.NotificationType" />
+    <EntitySet Name="Parameters" EntityType="Self.Parameter" />
+    <EntitySet Name="Persons" EntityType="Self.Person" />
+    <EntitySet Name="PersonsByGroups" EntityType="Self.PersonsByGroup" />
+    <EntitySet Name="PointsByRestrictedAreas" EntityType="Self.PointsByRestrictedArea" />
+    <EntitySet Name="RecordTypes" EntityType="Self.RecordType" />
+    <EntitySet Name="ResponsesByTickets" EntityType="Self.ResponsesByTicket" />
+    <EntitySet Name="RestrictedAreas" EntityType="Self.RestrictedArea" />
+    <EntitySet Name="RestrictedPersons" EntityType="Self.RestrictedPerson" />
+    <EntitySet Name="Sessions" EntityType="Self.Session" />
+    <EntitySet Name="SessionUses" EntityType="Self.SessionUs" />
+    <EntitySet Name="SimCards" EntityType="Self.SimCard" />
+    <EntitySet Name="SimCardUses" EntityType="Self.SimCardUs" />
+    <EntitySet Name="Tickets" EntityType="Self.Ticket" />
+    <EntitySet Name="TicketStates" EntityType="Self.TicketState" />
+    <EntitySet Name="Tokens" EntityType="Self.Token" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UsersByGroups" EntityType="Self.UsersByGroup" />
+    <EntitySet Name="samples" EntityType="Self.sample" />
+    <AssociationSet Name="FK_AlertsByTicket_Tickets" Association="Self.FK_AlertsByTicket_Tickets">
+      <End Role="Tickets" EntitySet="Tickets" />
+      <End Role="AlertsByTicket" EntitySet="AlertsByTickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarrierByCountries_Carriers" Association="Self.FK_CarrierByCountries_Carriers">
+      <End Role="Carriers" EntitySet="Carriers" />
+      <End Role="CarrierByCountries" EntitySet="CarrierByCountries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarrierByCountries_Countries" Association="Self.FK_CarrierByCountries_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="CarrierByCountries" EntitySet="CarrierByCountries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SimCards_CarrierByCountries" Association="Self.FK_SimCards_CarrierByCountries">
+      <End Role="CarrierByCountries" EntitySet="CarrierByCountries" />
+      <End Role="SimCards" EntitySet="SimCards" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Centers_Countries" Association="Self.FK_Centers_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="Centers" EntitySet="Centers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Devices_Centers" Association="Self.FK_Devices_Centers">
+      <End Role="Centers" EntitySet="Centers" />
+      <End Role="Devices" EntitySet="Devices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Groups_Centers" Association="Self.FK_Groups_Centers">
+      <End Role="Centers" EntitySet="Centers" />
+      <End Role="Groups" EntitySet="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persons_Centers" Association="Self.FK_Persons_Centers">
+      <End Role="Centers" EntitySet="Centers" />
+      <End Role="Persons" EntitySet="Persons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RestrictedAreas_Centers" Association="Self.FK_RestrictedAreas_Centers">
+      <End Role="Centers" EntitySet="Centers" />
+      <End Role="RestrictedAreas" EntitySet="RestrictedAreas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SimCards_Centers" Association="Self.FK_SimCards_Centers">
+      <End Role="Centers" EntitySet="Centers" />
+      <End Role="SimCards" EntitySet="SimCards" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_Centers" Association="Self.FK_Tickets_Centers">
+      <End Role="Centers" EntitySet="Centers" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Centers" Association="Self.FK_Users_Centers">
+      <End Role="Centers" EntitySet="Centers" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Connections_Devices" Association="Self.FK_Connections_Devices">
+      <End Role="Devices" EntitySet="Devices" />
+      <End Role="Connections" EntitySet="Connections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Connections_Persons" Association="Self.FK_Connections_Persons">
+      <End Role="Persons" EntitySet="Persons" />
+      <End Role="Connections" EntitySet="Connections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persons_Connections" Association="Self.FK_Persons_Connections">
+      <End Role="Connections" EntitySet="Connections" />
+      <End Role="Persons" EntitySet="Persons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persons_Countries" Association="Self.FK_Persons_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="Persons" EntitySet="Persons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Countries" Association="Self.FK_Users_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persons_Customers" Association="Self.FK_Persons_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Persons" EntitySet="Persons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Customers" Association="Self.FK_Users_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Devices_DeviceTypes" Association="Self.FK_Devices_DeviceTypes">
+      <End Role="DeviceTypes" EntitySet="DeviceTypes" />
+      <End Role="Devices" EntitySet="Devices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Devices_Persons" Association="Self.FK_Devices_Persons">
+      <End Role="Persons" EntitySet="Persons" />
+      <End Role="Devices" EntitySet="Devices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Devices_SimCards" Association="Self.FK_Devices_SimCards">
+      <End Role="SimCards" EntitySet="SimCards" />
+      <End Role="Devices" EntitySet="Devices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeviceUses_Devices" Association="Self.FK_DeviceUses_Devices">
+      <End Role="Devices" EntitySet="Devices" />
+      <End Role="DeviceUses" EntitySet="DeviceUses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Locations_Devices" Association="Self.FK_Locations_Devices">
+      <End Role="Devices" EntitySet="Devices" />
+      <End Role="Locations" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persons_Devices" Association="Self.FK_Persons_Devices">
+      <End Role="Devices" EntitySet="Devices" />
+      <End Role="Persons" EntitySet="Persons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SimCards_Devices" Association="Self.FK_SimCards_Devices">
+      <End Role="Devices" EntitySet="Devices" />
+      <End Role="SimCards" EntitySet="SimCards" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SimCardUses_Devices" Association="Self.FK_SimCardUses_Devices">
+      <End Role="Devices" EntitySet="Devices" />
+      <End Role="SimCardUses" EntitySet="SimCardUses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeviceUses_Persons" Association="Self.FK_DeviceUses_Persons">
+      <End Role="Persons" EntitySet="Persons" />
+      <End Role="DeviceUses" EntitySet="DeviceUses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonsByGroup_Groups" Association="Self.FK_PersonsByGroup_Groups">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="PersonsByGroup" EntitySet="PersonsByGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersByGroup_Groups" Association="Self.FK_UsersByGroup_Groups">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="UsersByGroup" EntitySet="UsersByGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persons_Languages" Association="Self.FK_Persons_Languages">
+      <End Role="Languages" EntitySet="Languages" />
+      <End Role="Persons" EntitySet="Persons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Languages" Association="Self.FK_Users_Languages">
+      <End Role="Languages" EntitySet="Languages" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Locations_Persons" Association="Self.FK_Locations_Persons">
+      <End Role="Persons" EntitySet="Persons" />
+      <End Role="Locations" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persons_Locations" Association="Self.FK_Persons_Locations">
+      <End Role="Locations" EntitySet="Locations" />
+      <End Role="Persons" EntitySet="Persons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_Locations" Association="Self.FK_Tickets_Locations">
+      <End Role="Locations" EntitySet="Locations" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logs_Users" Association="Self.FK_Logs_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persons_Users" Association="Self.FK_Persons_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Persons" EntitySet="Persons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonsByGroup_Persons" Association="Self.FK_PersonsByGroup_Persons">
+      <End Role="Persons" EntitySet="Persons" />
+      <End Role="PersonsByGroup" EntitySet="PersonsByGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RestrictedAreas_Persons" Association="Self.FK_RestrictedAreas_Persons">
+      <End Role="Persons" EntitySet="Persons" />
+      <End Role="RestrictedAreas" EntitySet="RestrictedAreas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RestrictedPersons_Persons" Association="Self.FK_RestrictedPersons_Persons">
+      <End Role="Persons" EntitySet="Persons" />
+      <End Role="RestrictedPersons" EntitySet="RestrictedPersons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RestrictedPersons_Persons1" Association="Self.FK_RestrictedPersons_Persons1">
+      <End Role="Persons" EntitySet="Persons" />
+      <End Role="RestrictedPersons" EntitySet="RestrictedPersons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_Persons" Association="Self.FK_Tickets_Persons">
+      <End Role="Persons" EntitySet="Persons" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PointsByRestrictedArea_RestrictedAreas" Association="Self.FK_PointsByRestrictedArea_RestrictedAreas">
+      <End Role="RestrictedAreas" EntitySet="RestrictedAreas" />
+      <End Role="PointsByRestrictedArea" EntitySet="PointsByRestrictedAreas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResponsesByTicket_Tickets" Association="Self.FK_ResponsesByTicket_Tickets">
+      <End Role="Tickets" EntitySet="Tickets" />
+      <End Role="ResponsesByTicket" EntitySet="ResponsesByTickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResponsesByTicket_TicketStates" Association="Self.FK_ResponsesByTicket_TicketStates">
+      <End Role="TicketStates" EntitySet="TicketStates" />
+      <End Role="ResponsesByTicket" EntitySet="ResponsesByTickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResponsesByTicket_Users" Association="Self.FK_ResponsesByTicket_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ResponsesByTicket" EntitySet="ResponsesByTickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RestrictedAreas_RestrictedAreas1" Association="Self.FK_RestrictedAreas_RestrictedAreas1">
+      <End Role="RestrictedAreas" EntitySet="RestrictedAreas" />
+      <End Role="RestrictedAreas1" EntitySet="RestrictedAreas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sessions_Users" Association="Self.FK_Sessions_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Sessions" EntitySet="Sessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SessionUses_Sessions" Association="Self.FK_SessionUses_Sessions">
+      <End Role="Sessions" EntitySet="Sessions" />
+      <End Role="SessionUses" EntitySet="SessionUses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SimCardUses_SimCards" Association="Self.FK_SimCardUses_SimCards">
+      <End Role="SimCards" EntitySet="SimCards" />
+      <End Role="SimCardUses" EntitySet="SimCardUses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_TicketStates" Association="Self.FK_Tickets_TicketStates">
+      <End Role="TicketStates" EntitySet="TicketStates" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_Users" Association="Self.FK_Tickets_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tokens_Users" Association="Self.FK_Tokens_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Tokens" EntitySet="Tokens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Users" Association="Self.FK_Users_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Users1" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersByGroup_Users" Association="Self.FK_UsersByGroup_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UsersByGroup" EntitySet="UsersByGroups" />
+    </AssociationSet>
+    <FunctionImport Name="f_spCustomTicket">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="GroupById" Mode="In" Type="Byte" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="DateReference" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spAlertsByTicket" ReturnType="Collection(fennix360_pdnModel.spAlertsByTicket_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="TicketId" Mode="In" Type="Int64" />
+      <Parameter Name="AlertId" Mode="In" Type="Byte" />
+      <Parameter Name="Data" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spCarrierByCountries" ReturnType="Collection(fennix360_pdnModel.spCarrierByCountries_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="CarrierId" Mode="In" Type="Int32" />
+      <Parameter Name="CountryId" Mode="In" Type="Int32" />
+      <Parameter Name="APN" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spCarriers" ReturnType="Collection(fennix360_pdnModel.spCarriers_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Active" Mode="In" Type="Boolean" />
+      <Parameter Name="Created" Mode="In" Type="DateTime" />
+      <Parameter Name="Updated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spCenters" ReturnType="Collection(fennix360_pdnModel.spCenters_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="CountryId" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+      <Parameter Name="PostalCode" Mode="In" Type="String" />
+      <Parameter Name="LevelId" Mode="In" Type="Byte" />
+      <Parameter Name="Level2Id" Mode="In" Type="Int32" />
+      <Parameter Name="Level3Id" Mode="In" Type="Int32" />
+      <Parameter Name="Level4Id" Mode="In" Type="Int32" />
+      <Parameter Name="Active" Mode="In" Type="Boolean" />
+      <Parameter Name="Created" Mode="In" Type="DateTime" />
+      <Parameter Name="Updated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spConnections" ReturnType="Collection(fennix360_pdnModel.spConnections_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="PersonId" Mode="In" Type="Int64" />
+      <Parameter Name="DeviceId" Mode="In" Type="Int64" />
+      <Parameter Name="SessionCode" Mode="In" Type="String" />
+      <Parameter Name="HostAddress" Mode="In" Type="String" />
+      <Parameter Name="FirmwareVersion" Mode="In" Type="String" />
+      <Parameter Name="Started" Mode="In" Type="DateTime" />
+      <Parameter Name="Finished" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spCountries" ReturnType="Collection(fennix360_pdnModel.spCountries_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="ISOCode" Mode="In" Type="String" />
+      <Parameter Name="PhoneCode" Mode="In" Type="String" />
+      <Parameter Name="Active" Mode="In" Type="Boolean" />
+      <Parameter Name="Created" Mode="In" Type="DateTime" />
+      <Parameter Name="Updated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spCustomers" ReturnType="Collection(fennix360_pdnModel.spCustomers_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Logo" Mode="In" Type="String" />
+      <Parameter Name="Active" Mode="In" Type="Boolean" />
+      <Parameter Name="Created" Mode="In" Type="DateTime" />
+      <Parameter Name="Updated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spDevices" ReturnType="Collection(fennix360_pdnModel.spDevices_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="CenterId" Mode="In" Type="Int32" />
+      <Parameter Name="SimCardId" Mode="In" Type="Int64" />
+      <Parameter Name="PersonId" Mode="In" Type="Int64" />
+      <Parameter Name="DeviceTypeId" Mode="In" Type="Int32" />
+      <Parameter Name="IMEI" Mode="In" Type="String" />
+      <Parameter Name="FirmwareVersion" Mode="In" Type="String" />
+      <Parameter Name="Active" Mode="In" Type="Boolean" />
+      <Parameter Name="Online" Mode="In" Type="Boolean" />
+      <Parameter Name="Created" Mode="In" Type="DateTime" />
+      <Parameter Name="Updated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spDeviceTypes" ReturnType="Collection(fennix360_pdnModel.spDeviceTypes_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="MinSpeed" Mode="In" Type="Int32" />
+      <Parameter Name="MaxHdop" Mode="In" Type="Int32" />
+      <Parameter Name="MinGpsLevel" Mode="In" Type="Int32" />
+      <Parameter Name="MinDifferenceTrackPoints" Mode="In" Type="Decimal" />
+      <Parameter Name="Timeout" Mode="In" Type="Int32" />
+      <Parameter Name="StationaryTimeout" Mode="In" Type="Int32" />
+      <Parameter Name="Icon" Mode="In" Type="String" />
+      <Parameter Name="MapIcon" Mode="In" Type="String" />
+      <Parameter Name="TailColor" Mode="In" Type="String" />
+      <Parameter Name="TailPoints" Mode="In" Type="Int32" />
+      <Parameter Name="Active" Mode="In" Type="Boolean" />
+      <Parameter Name="Created" Mode="In" Type="DateTime" />
+      <Parameter Name="Updated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spDeviceUses" ReturnType="Collection(fennix360_pdnModel.spDeviceUses_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="PersonId" Mode="In" Type="Int64" />
+      <Parameter Name="DeviceId" Mode="In" Type="Int64" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spGroups" ReturnType="Collection(fennix360_pdnModel.spGroups_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="CenterId" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Active" Mode="In" Type="Boolean" />
+      <Parameter Name="Created" Mode="In" Type="DateTime" />
+      <Parameter Name="Updated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spLanguages" ReturnType="Collection(fennix360_pdnModel.spLanguages_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="ISOCode" Mode="In" Type="String" />
+      <Parameter Name="Active" Mode="In" Type="Boolean" />
+      <Parameter Name="Created" Mode="In" Type="DateTime" />
+      <Parameter Name="Updated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spLocations" ReturnType="Collection(fennix360_pdnModel.spLocations_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="PersonId" Mode="In" Type="Int64" />
+      <Parameter Name="DeviceId" Mode="In" Type="Int64" />
+      <Parameter Name="ConnectingSession" Mode="In" Type="String" />
+      <Parameter Name="SerialNumber" Mode="In" Type="String" />
+      <Parameter Name="DeviceDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ServerDate" Mode="In" Type="DateTime" />
+      <Parameter Name="Latitude" Mode="In" Type="Decimal" />
+      <Parameter Name="Longitude" Mode="In" Type="Decimal" />
+      <Parameter Name="Speed" Mode="In" Type="Decimal" />
+      <Parameter Name="Course" Mode="In" Type="Int32" />
+      <Parameter Name="MoveDistance" Mode="In" Type="Int32" />
+      <Parameter Name="GPSstatus" Mode="In" Type="String" />
+      <Parameter Name="SatellitesNumber" Mode="In" Type="Byte" />
+      <Parameter Name="GPSFixedStatus" Mode="In" Type="Byte" />
+      <Parameter Name="HDOP" Mode="In" Type="Int32" />
+      <Parameter Name="MCC" Mode="In" Type="String" />
+      <Parameter Name="LAC" Mode="In" Type="String" />
+      <Parameter Name="CellID" Mode="In" Type="String" />
+      <Parameter Name="AlarmStatus" Mode="In" Type="String" />
+      <Parameter Name="BatteryVoltage" Mode="In" Type="Decimal" />
+      <Parameter Name="BatteryPercentage" Mode="In" Type="Int32" />
+      <Parameter Name="GSMSignal" Mode="In" Type="Byte" />
+      <Parameter Name="BeltStatus" Mode="In" Type="Boolean" />
+      <Parameter Name="ShellStatus" Mode="In" Type="Boolean" />
+      <Parameter Name="ChargeStatus" Mode="In" Type="Int32" />
+      <Parameter Name="LowPowerStatus" Mode="In" Type="Boolean" />
+      <Parameter Name="DataLoggerStatus" Mode="In" Type="Boolean" />
+      <Parameter Name="StillStatus" Mode="In" Type="Boolean" />
+      <Parameter Name="EnableAlarmsStatus" Mode="In" Type="Boolean" />
+      <Parameter Name="BuzzerStatus" Mode="In" Type="Boolean" />
+      <Parameter Name="VibratorStatus" Mode="In" Type="Boolean" />
+      <Parameter Name="RFConnectionStatus" Mode="In" Type="Boolean" />
+      <Parameter Name="RFGsensorStatus" Mode="In" Type="Boolean" />
+      <Parameter Name="RFPlugStatus" Mode="In" Type="Boolean" />
+      <Parameter Name="RestrictedAreasStatus" Mode="In" Type="Boolean" />
+      <Parameter Name="RestrictedPersonsStatus" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="spLogs" ReturnType="Collection(fennix360_pdnModel.spLogs_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="UserId" Mode="In" Type="Int64" />
+      <Parameter Name="RecordTypeId" Mode="In" Type="Int32" />
+      <Parameter Name="RecordId" Mode="In" Type="Int64" />
+      <Parameter Name="Resource" Mode="In" Type="String" />
+      <Parameter Name="LogTypeId" Mode="In" Type="Int32" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="Created" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spNotificationTypes" ReturnType="Collection(fennix360_pdnModel.spNotificationTypes_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Content" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spParameters" ReturnType="Collection(fennix360_pdnModel.spParameters_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Value" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spPersons" ReturnType="Collection(fennix360_pdnModel.spPersons_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="CustomerId" Mode="In" Type="Int32" />
+      <Parameter Name="CenterId" Mode="In" Type="Int32" />
+      <Parameter Name="CountryId" Mode="In" Type="Int32" />
+      <Parameter Name="LanguageId" Mode="In" Type="Int32" />
+      <Parameter Name="PersonTypeId" Mode="In" Type="Int32" />
+      <Parameter Name="DeviceId" Mode="In" Type="Int64" />
+      <Parameter Name="OwnerUserId" Mode="In" Type="Int64" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="GenreId" Mode="In" Type="Byte" />
+      <Parameter Name="Birthdate" Mode="In" Type="DateTime" />
+      <Parameter Name="DocumentId" Mode="In" Type="String" />
+      <Parameter Name="Height" Mode="In" Type="String" />
+      <Parameter Name="Weight" Mode="In" Type="String" />
+      <Parameter Name="EyesColor" Mode="In" Type="String" />
+      <Parameter Name="HairColor" Mode="In" Type="String" />
+      <Parameter Name="EthnyId" Mode="In" Type="Byte" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+      <Parameter Name="FamilyPhones" Mode="In" Type="String" />
+      <Parameter Name="PostalCode" Mode="In" Type="String" />
+      <Parameter Name="ScarsMarksTattoos" Mode="In" Type="String" />
+      <Parameter Name="CrimeId" Mode="In" Type="Byte" />
+      <Parameter Name="Nicknames" Mode="In" Type="String" />
+      <Parameter Name="RiskId" Mode="In" Type="Byte" />
+      <Parameter Name="TimeZone" Mode="In" Type="Int32" />
+      <Parameter Name="AutoDST" Mode="In" Type="Boolean" />
+      <Parameter Name="Picture" Mode="In" Type="String" />
+      <Parameter Name="LocationId" Mode="In" Type="Int64" />
+      <Parameter Name="ConnectionId" Mode="In" Type="Int64" />
+      <Parameter Name="HasHouseArrest" Mode="In" Type="Boolean" />
+      <Parameter Name="Comments" Mode="In" Type="String" />
+      <Parameter Name="Active" Mode="In" Type="Boolean" />
+      <Parameter Name="ViewOnMap" Mode="In" Type="Boolean" />
+      <Parameter Name="Online" Mode="In" Type="Boolean" />
+      <Parameter Name="AccessCode" Mode="In" Type="String" />
+      <Parameter Name="Created" Mode="In" Type="DateTime" />
+      <Parameter Name="Updated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spPersonsByGroup" ReturnType="Collection(fennix360_pdnModel.spPersonsByGroup_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="PersonId" Mode="In" Type="Int64" />
+      <Parameter Name="GroupId" Mode="In" Type="Int64" />
+      <Parameter Name="Created" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spPointsByRestrictedArea" ReturnType="Collection(fennix360_pdnModel.spPointsByRestrictedArea_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="RestrictedAreaId" Mode="In" Type="Int64" />
+      <Parameter Name="Latitude" Mode="In" Type="Decimal" />
+      <Parameter Name="Longitude" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="spRecordTypes" ReturnType="Collection(fennix360_pdnModel.spRecordTypes_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spResponsesByTicket" ReturnType="Collection(fennix360_pdnModel.spResponsesByTicket_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="TicketId" Mode="In" Type="Int64" />
+      <Parameter Name="UserId" Mode="In" Type="Int64" />
+      <Parameter Name="TicketStateId" Mode="In" Type="Byte" />
+      <Parameter Name="Message" Mode="In" Type="String" />
+      <Parameter Name="Created" Mode="In" Type="DateTime" />
+      <Parameter Name="Updated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spRestrictedAreas" ReturnType="Collection(fennix360_pdnModel.spRestrictedAreas_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="RestrictedAreaId" Mode="In" Type="Int64" />
+      <Parameter Name="CenterId" Mode="In" Type="Int32" />
+      <Parameter Name="PersonId" Mode="In" Type="Int64" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Color" Mode="In" Type="String" />
+      <Parameter Name="RestrictionTypeId" Mode="In" Type="Byte" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="FinishDate" Mode="In" Type="DateTime" />
+      <Parameter Name="RepeatRules" Mode="In" Type="String" />
+      <Parameter Name="OnAlert" Mode="In" Type="Boolean" />
+      <Parameter Name="Active" Mode="In" Type="Boolean" />
+      <Parameter Name="Created" Mode="In" Type="DateTime" />
+      <Parameter Name="Updated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spRestrictedPersons" ReturnType="Collection(fennix360_pdnModel.spRestrictedPersons_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="OriginPersonId" Mode="In" Type="Int64" />
+      <Parameter Name="DestinationPersonId" Mode="In" Type="Int64" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="RestrictionTypeId" Mode="In" Type="Byte" />
+      <Parameter Name="UnitTypeId" Mode="In" Type="Byte" />
+      <Parameter Name="Distance" Mode="In" Type="Decimal" />
+      <Parameter Name="NotifyDestinatary" Mode="In" Type="Boolean" />
+      <Parameter Name="OnAlert" Mode="In" Type="Boolean" />
+      <Parameter Name="Active" Mode="In" Type="Boolean" />
+      <Parameter Name="Created" Mode="In" Type="DateTime" />
+      <Parameter Name="Updated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spSessions" ReturnType="Collection(fennix360_pdnModel.spSessions_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="UserId" Mode="In" Type="Int64" />
+      <Parameter Name="TokenId" Mode="In" Type="Int64" />
+      <Parameter Name="Browser" Mode="In" Type="String" />
+      <Parameter Name="Started" Mode="In" Type="DateTime" />
+      <Parameter Name="Platform" Mode="In" Type="String" />
+      <Parameter Name="Agent" Mode="In" Type="String" />
+      <Parameter Name="HostAddress" Mode="In" Type="String" />
+      <Parameter Name="Location" Mode="In" Type="String" />
+      <Parameter Name="LocationName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spSessionUses" ReturnType="Collection(fennix360_pdnModel.spSessionUses_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="SessionId" Mode="In" Type="Int64" />
+      <Parameter Name="Started" Mode="In" Type="DateTime" />
+      <Parameter Name="HostAddress" Mode="In" Type="String" />
+      <Parameter Name="Location" Mode="In" Type="String" />
+      <Parameter Name="LocationName" Mode="In" Type="String" />
+      <Parameter Name="AdditionalInfo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spSimCards" ReturnType="Collection(fennix360_pdnModel.spSimCards_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="CenterId" Mode="In" Type="Int32" />
+      <Parameter Name="DeviceId" Mode="In" Type="Int64" />
+      <Parameter Name="CarrierByCountryId" Mode="In" Type="Int32" />
+      <Parameter Name="SimCardTypeId" Mode="In" Type="Int32" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+      <Parameter Name="Serial" Mode="In" Type="String" />
+      <Parameter Name="Active" Mode="In" Type="Boolean" />
+      <Parameter Name="Created" Mode="In" Type="DateTime" />
+      <Parameter Name="Updated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spSimCardUses" ReturnType="Collection(fennix360_pdnModel.spSimCardUses_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="DeviceId" Mode="In" Type="Int64" />
+      <Parameter Name="SimCardId" Mode="In" Type="Int64" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spTickets" ReturnType="Collection(fennix360_pdnModel.spTickets_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="UserId" Mode="In" Type="Int64" />
+      <Parameter Name="CenterId" Mode="In" Type="Int32" />
+      <Parameter Name="PersonId" Mode="In" Type="Int64" />
+      <Parameter Name="LocationId" Mode="In" Type="Int64" />
+      <Parameter Name="TicketStateId" Mode="In" Type="Byte" />
+      <Parameter Name="Message" Mode="In" Type="String" />
+      <Parameter Name="WithAlerts" Mode="In" Type="Boolean" />
+      <Parameter Name="Created" Mode="In" Type="DateTime" />
+      <Parameter Name="Updated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spTicketStates" ReturnType="Collection(fennix360_pdnModel.spTicketStates_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="In" Type="Byte" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spTokens" ReturnType="Collection(fennix360_pdnModel.spTokens_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="UserId" Mode="In" Type="Int64" />
+      <Parameter Name="SessionId" Mode="In" Type="Int64" />
+      <Parameter Name="Code" Mode="In" Type="String" />
+      <Parameter Name="LongLife" Mode="In" Type="Boolean" />
+      <Parameter Name="Start" Mode="In" Type="DateTime" />
+      <Parameter Name="Finish" Mode="In" Type="DateTime" />
+      <Parameter Name="LastUse" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spUsers" ReturnType="Collection(fennix360_pdnModel.spUsers_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="CustomerId" Mode="In" Type="Int32" />
+      <Parameter Name="CenterId" Mode="In" Type="Int32" />
+      <Parameter Name="CountryId" Mode="In" Type="Int32" />
+      <Parameter Name="LanguageId" Mode="In" Type="Int32" />
+      <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+      <Parameter Name="OwnerUserId" Mode="In" Type="Int64" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+      <Parameter Name="GenreId" Mode="In" Type="Byte" />
+      <Parameter Name="TimeZone" Mode="In" Type="Int32" />
+      <Parameter Name="AutoDST" Mode="In" Type="Boolean" />
+      <Parameter Name="Picture" Mode="In" Type="String" />
+      <Parameter Name="Active" Mode="In" Type="Boolean" />
+      <Parameter Name="Online" Mode="In" Type="Boolean" />
+      <Parameter Name="Created" Mode="In" Type="DateTime" />
+      <Parameter Name="Updated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spUsersByGroup" ReturnType="Collection(fennix360_pdnModel.spUsersByGroup_Result)">
+      <Parameter Name="Operation" Mode="In" Type="String" />
+      <Parameter Name="SkipRows" Mode="In" Type="Int32" />
+      <Parameter Name="TakeRows" Mode="In" Type="Int32" />
+      <Parameter Name="OrderBy" Mode="In" Type="String" />
+      <Parameter Name="Where" Mode="In" Type="String" />
+      <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+      <Parameter Name="Id" Mode="InOut" Type="Int64" />
+      <Parameter Name="UserId" Mode="In" Type="Int64" />
+      <Parameter Name="GroupId" Mode="In" Type="Int64" />
+      <Parameter Name="Watching" Mode="In" Type="Boolean" />
+      <Parameter Name="Created" Mode="In" Type="DateTime" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="spAlertsByTicket_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int64" Name="TicketId" Nullable="false" />
+    <Property Type="Byte" Name="AlertId" Nullable="false" />
+    <Property Type="String" Name="Data" Nullable="true" />
+    <Property Type="String" Name="MessageTicketId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="spCarrierByCountries_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="CarrierId" Nullable="false" />
+    <Property Type="Int32" Name="CountryId" Nullable="false" />
+    <Property Type="String" Name="APN" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="NameCarrierId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NameCountryId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spCarriers_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+    <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Updated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="spCenters_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="CountryId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PostalCode" Nullable="true" MaxLength="50" />
+    <Property Type="Byte" Name="LevelId" Nullable="false" />
+    <Property Type="Int32" Name="Level2Id" Nullable="true" />
+    <Property Type="Int32" Name="Level3Id" Nullable="true" />
+    <Property Type="Int32" Name="Level4Id" Nullable="true" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+    <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Updated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="NameCountryId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spConnections_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int64" Name="PersonId" Nullable="false" />
+    <Property Type="Int64" Name="DeviceId" Nullable="true" />
+    <Property Type="String" Name="SessionCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HostAddress" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="FirmwareVersion" Nullable="true" MaxLength="2000" />
+    <Property Type="DateTime" Name="Started" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Finished" Nullable="true" Precision="23" />
+    <Property Type="String" Name="FirstNamePersonId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="IMEIDeviceId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spCountries_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ISOCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="PhoneCode" Nullable="false" MaxLength="10" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+    <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Updated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="spCustomers_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Logo" Nullable="true" MaxLength="128" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+    <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Updated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="spDevices_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="CenterId" Nullable="false" />
+    <Property Type="Int64" Name="SimCardId" Nullable="true" />
+    <Property Type="Int64" Name="PersonId" Nullable="true" />
+    <Property Type="Int32" Name="DeviceTypeId" Nullable="false" />
+    <Property Type="String" Name="IMEI" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="FirmwareVersion" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+    <Property Type="Boolean" Name="Online" Nullable="false" />
+    <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Updated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="NameCenterId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PhoneSimCardId" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="FirstNamePersonId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NameDeviceTypeId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spDeviceTypes_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="MinSpeed" Nullable="false" />
+    <Property Type="Int32" Name="MaxHdop" Nullable="false" />
+    <Property Type="Int32" Name="MinGpsLevel" Nullable="false" />
+    <Property Type="Decimal" Name="MinDifferenceTrackPoints" Nullable="false" Precision="9" Scale="6" />
+    <Property Type="Int32" Name="Timeout" Nullable="false" />
+    <Property Type="Int32" Name="StationaryTimeout" Nullable="false" />
+    <Property Type="String" Name="Icon" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MapIcon" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="TailColor" Nullable="false" MaxLength="7" />
+    <Property Type="Int32" Name="TailPoints" Nullable="false" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+    <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Updated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="spDeviceUses_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int64" Name="PersonId" Nullable="false" />
+    <Property Type="Int64" Name="DeviceId" Nullable="false" />
+    <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="FirstNamePersonId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="IMEIDeviceId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spGroups_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="CenterId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+    <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Updated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="NameCenterId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spLanguages_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ISOCode" Nullable="false" MaxLength="6" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+    <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Updated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="spLocations_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int64" Name="PersonId" Nullable="false" />
+    <Property Type="Int64" Name="DeviceId" Nullable="true" />
+    <Property Type="String" Name="ConnectingSession" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="SerialNumber" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="DeviceDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="ServerDate" Nullable="false" Precision="23" />
+    <Property Type="Decimal" Name="Latitude" Nullable="false" Precision="8" Scale="6" />
+    <Property Type="Decimal" Name="Longitude" Nullable="false" Precision="9" Scale="6" />
+    <Property Type="Decimal" Name="Speed" Nullable="false" Precision="4" Scale="1" />
+    <Property Type="Int32" Name="Course" Nullable="false" />
+    <Property Type="Int32" Name="MoveDistance" Nullable="false" />
+    <Property Type="String" Name="GPSstatus" Nullable="false" MaxLength="1" />
+    <Property Type="Byte" Name="SatellitesNumber" Nullable="false" />
+    <Property Type="Byte" Name="GPSFixedStatus" Nullable="false" />
+    <Property Type="Int32" Name="HDOP" Nullable="false" />
+    <Property Type="String" Name="MCC" Nullable="false" MaxLength="3" />
+    <Property Type="String" Name="LAC" Nullable="false" MaxLength="4" />
+    <Property Type="String" Name="CellID" Nullable="false" MaxLength="4" />
+    <Property Type="String" Name="AlarmStatus" Nullable="false" MaxLength="21" />
+    <Property Type="Decimal" Name="BatteryVoltage" Nullable="false" Precision="4" Scale="2" />
+    <Property Type="Int32" Name="BatteryPercentage" Nullable="false" />
+    <Property Type="Byte" Name="GSMSignal" Nullable="false" />
+    <Property Type="Boolean" Name="BeltStatus" Nullable="false" />
+    <Property Type="Boolean" Name="ShellStatus" Nullable="false" />
+    <Property Type="Int32" Name="ChargeStatus" Nullable="false" />
+    <Property Type="Boolean" Name="LowPowerStatus" Nullable="false" />
+    <Property Type="Boolean" Name="DataLoggerStatus" Nullable="false" />
+    <Property Type="Boolean" Name="StillStatus" Nullable="false" />
+    <Property Type="Boolean" Name="EnableAlarmsStatus" Nullable="false" />
+    <Property Type="Boolean" Name="BuzzerStatus" Nullable="false" />
+    <Property Type="Boolean" Name="VibratorStatus" Nullable="false" />
+    <Property Type="Boolean" Name="RFConnectionStatus" Nullable="false" />
+    <Property Type="Boolean" Name="RFGsensorStatus" Nullable="false" />
+    <Property Type="Boolean" Name="RFPlugStatus" Nullable="false" />
+    <Property Type="Boolean" Name="RestrictedAreasStatus" Nullable="false" />
+    <Property Type="Boolean" Name="RestrictedPersonsStatus" Nullable="false" />
+    <Property Type="String" Name="FirstNamePersonId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="IMEIDeviceId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spLogs_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int64" Name="UserId" Nullable="true" />
+    <Property Type="Int32" Name="RecordTypeId" Nullable="false" />
+    <Property Type="Int64" Name="RecordId" Nullable="false" />
+    <Property Type="String" Name="Resource" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="LogTypeId" Nullable="false" />
+    <Property Type="String" Name="Action" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+    <Property Type="String" Name="FirstNameUserId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spNotificationTypes_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="String" Name="Content" Nullable="false" MaxLength="2000" />
+  </ComplexType>
+  <ComplexType Name="spParameters_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="String" Name="Value" Nullable="false" MaxLength="2000" />
+  </ComplexType>
+  <ComplexType Name="spPersons_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="CustomerId" Nullable="false" />
+    <Property Type="Int32" Name="CenterId" Nullable="false" />
+    <Property Type="Int32" Name="CountryId" Nullable="false" />
+    <Property Type="Int32" Name="LanguageId" Nullable="false" />
+    <Property Type="Int32" Name="PersonTypeId" Nullable="false" />
+    <Property Type="Int64" Name="DeviceId" Nullable="true" />
+    <Property Type="Int64" Name="OwnerUserId" Nullable="true" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="Byte" Name="GenreId" Nullable="false" />
+    <Property Type="DateTime" Name="Birthdate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="DocumentId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Height" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Weight" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="EyesColor" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="HairColor" Nullable="true" MaxLength="20" />
+    <Property Type="Byte" Name="EthnyId" Nullable="false" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FamilyPhones" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PostalCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ScarsMarksTattoos" Nullable="true" MaxLength="50" />
+    <Property Type="Byte" Name="CrimeId" Nullable="false" />
+    <Property Type="String" Name="Nicknames" Nullable="true" MaxLength="50" />
+    <Property Type="Byte" Name="RiskId" Nullable="false" />
+    <Property Type="Int32" Name="TimeZone" Nullable="false" />
+    <Property Type="Boolean" Name="AutoDST" Nullable="false" />
+    <Property Type="String" Name="Picture" Nullable="true" MaxLength="50" />
+    <Property Type="Int64" Name="LocationId" Nullable="true" />
+    <Property Type="Int64" Name="ConnectionId" Nullable="true" />
+    <Property Type="Boolean" Name="HasHouseArrest" Nullable="false" />
+    <Property Type="String" Name="Comments" Nullable="true" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+    <Property Type="Boolean" Name="ViewOnMap" Nullable="false" />
+    <Property Type="Boolean" Name="Online" Nullable="false" />
+    <Property Type="String" Name="AccessCode" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Updated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="NameCustomerId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NameCenterId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NameCountryId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NameLanguageId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="IMEIDeviceId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FirstNameOwnerUserId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ConnectingSessionLocationId" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="SessionCodeConnectionId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spPersonsByGroup_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int64" Name="PersonId" Nullable="false" />
+    <Property Type="Int64" Name="GroupId" Nullable="false" />
+    <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+    <Property Type="String" Name="FirstNamePersonId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NameGroupId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spPointsByRestrictedArea_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int64" Name="RestrictedAreaId" Nullable="false" />
+    <Property Type="Decimal" Name="Latitude" Nullable="false" Precision="8" Scale="6" />
+    <Property Type="Decimal" Name="Longitude" Nullable="false" Precision="9" Scale="6" />
+    <Property Type="String" Name="NameRestrictedAreaId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spRecordTypes_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spResponsesByTicket_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int64" Name="TicketId" Nullable="false" />
+    <Property Type="Int64" Name="UserId" Nullable="false" />
+    <Property Type="Byte" Name="TicketStateId" Nullable="false" />
+    <Property Type="String" Name="Message" Nullable="true" />
+    <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Updated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="MessageTicketId" Nullable="true" />
+    <Property Type="String" Name="FirstNameUserId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NameTicketStateId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spRestrictedAreas_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int64" Name="RestrictedAreaId" Nullable="true" />
+    <Property Type="Int32" Name="CenterId" Nullable="true" />
+    <Property Type="Int64" Name="PersonId" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Color" Nullable="false" MaxLength="7" />
+    <Property Type="Byte" Name="RestrictionTypeId" Nullable="false" />
+    <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FinishDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="RepeatRules" Nullable="false" MaxLength="2000" />
+    <Property Type="Boolean" Name="OnAlert" Nullable="false" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+    <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Updated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="NameRestrictedAreaId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NameCenterId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FirstNamePersonId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spRestrictedPersons_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int64" Name="OriginPersonId" Nullable="false" />
+    <Property Type="Int64" Name="DestinationPersonId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="Byte" Name="RestrictionTypeId" Nullable="false" />
+    <Property Type="Byte" Name="UnitTypeId" Nullable="false" />
+    <Property Type="Decimal" Name="Distance" Nullable="false" Precision="18" Scale="3" />
+    <Property Type="Boolean" Name="NotifyDestinatary" Nullable="false" />
+    <Property Type="Boolean" Name="OnAlert" Nullable="false" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+    <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Updated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="FirstNameOriginPersonId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FirstNameDestinationPersonId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spSessions_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int64" Name="UserId" Nullable="false" />
+    <Property Type="Int64" Name="TokenId" Nullable="false" />
+    <Property Type="String" Name="Browser" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Started" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Platform" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Agent" Nullable="true" />
+    <Property Type="String" Name="HostAddress" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="LocationName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="FirstNameUserId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spSessionUses_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int64" Name="SessionId" Nullable="false" />
+    <Property Type="DateTime" Name="Started" Nullable="false" Precision="23" />
+    <Property Type="String" Name="HostAddress" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="LocationName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="AdditionalInfo" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="BrowserSessionId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spSimCards_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="CenterId" Nullable="false" />
+    <Property Type="Int64" Name="DeviceId" Nullable="true" />
+    <Property Type="Int32" Name="CarrierByCountryId" Nullable="false" />
+    <Property Type="Int32" Name="SimCardTypeId" Nullable="false" />
+    <Property Type="String" Name="Phone" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Serial" Nullable="true" MaxLength="20" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+    <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Updated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="NameCenterId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="IMEIDeviceId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="APNCarrierByCountryId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spSimCardUses_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int64" Name="DeviceId" Nullable="false" />
+    <Property Type="Int64" Name="SimCardId" Nullable="false" />
+    <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="IMEIDeviceId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PhoneSimCardId" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="spTickets_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int64" Name="UserId" Nullable="true" />
+    <Property Type="Int32" Name="CenterId" Nullable="false" />
+    <Property Type="Int64" Name="PersonId" Nullable="false" />
+    <Property Type="Int64" Name="LocationId" Nullable="true" />
+    <Property Type="Byte" Name="TicketStateId" Nullable="false" />
+    <Property Type="String" Name="Message" Nullable="true" />
+    <Property Type="Boolean" Name="WithAlerts" Nullable="false" />
+    <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Updated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="FirstNameUserId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NameCenterId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FirstNamePersonId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ConnectingSessionLocationId" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="NameTicketStateId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spTicketStates_Result">
+    <Property Type="Byte" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spTokens_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int64" Name="UserId" Nullable="false" />
+    <Property Type="Int64" Name="SessionId" Nullable="true" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="255" />
+    <Property Type="Boolean" Name="LongLife" Nullable="false" />
+    <Property Type="DateTime" Name="Start" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Finish" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastUse" Nullable="true" Precision="23" />
+    <Property Type="String" Name="FirstNameUserId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spUsers_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="CustomerId" Nullable="true" />
+    <Property Type="Int32" Name="CenterId" Nullable="true" />
+    <Property Type="Int32" Name="CountryId" Nullable="false" />
+    <Property Type="Int32" Name="LanguageId" Nullable="false" />
+    <Property Type="Int32" Name="UserTypeId" Nullable="false" />
+    <Property Type="Int64" Name="OwnerUserId" Nullable="true" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="Byte" Name="GenreId" Nullable="false" />
+    <Property Type="Int32" Name="TimeZone" Nullable="false" />
+    <Property Type="Boolean" Name="AutoDST" Nullable="false" />
+    <Property Type="String" Name="Picture" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+    <Property Type="Boolean" Name="Online" Nullable="false" />
+    <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Updated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="NameCustomerId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NameCenterId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NameCountryId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NameLanguageId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FirstNameOwnerUserId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spUsersByGroup_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int64" Name="UserId" Nullable="false" />
+    <Property Type="Int64" Name="GroupId" Nullable="false" />
+    <Property Type="Boolean" Name="Watching" Nullable="false" />
+    <Property Type="DateTime" Name="Created" Nullable="false" Precision="23" />
+    <Property Type="String" Name="FirstNameUserId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NameGroupId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

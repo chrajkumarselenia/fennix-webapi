@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aad9c2cf0c024e90b13b854b3a42bb69" Name="Diagram1">
+        <EntityTypeShape EntityType="fennix360_pdnModel.AlertsByTicket" Width="1.5" PointX="29.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.CarrierByCountry" Width="1.5" PointX="3" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.Carrier" Width="1.5" PointX="0.75" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.Center" Width="1.5" PointX="3" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.Connection" Width="1.5" PointX="14.75" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.Country" Width="1.5" PointX="0.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.Customer" Width="1.5" PointX="17.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.Device" Width="1.5" PointX="12.5" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.DeviceType" Width="1.5" PointX="10.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.DeviceUs" Width="1.5" PointX="22.25" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.Group" Width="1.5" PointX="5.25" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.Language" Width="1.5" PointX="17.75" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.Location" Width="1.5" PointX="25.25" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.Log" Width="1.5" PointX="7.5" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.NotificationType" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.Parameter" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.Person" Width="1.5" PointX="20" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.PersonsByGroup" Width="1.5" PointX="22.25" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.PointsByRestrictedArea" Width="1.5" PointX="24.5" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.RecordType" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.ResponsesByTicket" Width="1.5" PointX="29.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.RestrictedArea" Width="1.5" PointX="22.25" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.RestrictedPerson" Width="1.5" PointX="22.25" PointY="43" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.Session" Width="1.5" PointX="7.5" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.SessionUs" Width="1.5" PointX="9.75" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.SimCard" Width="1.5" PointX="10.25" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.SimCardUs" Width="1.5" PointX="17.75" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.Ticket" Width="1.5" PointX="27.5" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.TicketState" Width="1.5" PointX="25.25" PointY="30.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.Token" Width="1.5" PointX="7.5" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.User" Width="1.5" PointX="5.25" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.UsersByGroup" Width="1.5" PointX="7.5" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="fennix360_pdnModel.sample" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_AlertsByTicket_Tickets" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_CarrierByCountries_Carriers" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_CarrierByCountries_Countries" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_SimCards_CarrierByCountries" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Centers_Countries" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Devices_Centers" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Groups_Centers" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Persons_Centers" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_RestrictedAreas_Centers" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_SimCards_Centers" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Tickets_Centers" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Users_Centers" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Connections_Devices" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Connections_Persons" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Persons_Connections" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Persons_Countries" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Users_Countries" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Persons_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Users_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Devices_DeviceTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Devices_Persons" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Devices_SimCards" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_DeviceUses_Devices" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Locations_Devices" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Persons_Devices" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_SimCards_Devices" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_SimCardUses_Devices" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_DeviceUses_Persons" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_PersonsByGroup_Groups" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_UsersByGroup_Groups" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Persons_Languages" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Users_Languages" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Locations_Persons" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Persons_Locations" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Tickets_Locations" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Logs_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Persons_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_PersonsByGroup_Persons" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_RestrictedAreas_Persons" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_RestrictedPersons_Persons" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_RestrictedPersons_Persons1" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Tickets_Persons" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_PointsByRestrictedArea_RestrictedAreas" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_ResponsesByTicket_Tickets" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_ResponsesByTicket_TicketStates" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_ResponsesByTicket_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_RestrictedAreas_RestrictedAreas1" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Sessions_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_SessionUses_Sessions" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_SimCardUses_SimCards" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Tickets_TicketStates" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Tickets_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Tokens_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_Users_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="fennix360_pdnModel.FK_UsersByGroup_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
